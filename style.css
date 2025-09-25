@@ -1,91 +1,375 @@
-/* General Body & Typography */
-body {
-    margin: 0;     font-family: sans-serif;     color: #fff;     background-color: #000;
+/* --- 1. Global Styles & Reset --- */
+:root {
+    --dark: #121212;
+    --gray-dark: #222;
+    --gold: #FFD700;
+    --text-light: #DDD;
 }
 
-/* Header & Navigation */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #FFF;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* --- 2. Header & Navigation --- */
 .header {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
+    background: var(--dark);
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .navbar {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 15px 20px;
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
+.nav-links a, .nav-icons i {
+    color: var(--text-light);
+    font-size: 14px;
+    transition: color 0.3s;
 }
 
-/* Hero Section - The Main Banner */
-.hero-banner {
-    width: 100%;
-    height: 100vh;
+.nav-icons {
     display: flex;
+    gap: 25px;
+}
+
+/* --- 3. HERO SECTION (CSS Cave Effect) --- */
+.hero-banner {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    position: relative;
-    background: url('background.png') no-repeat center center/cover;
+    background: radial-gradient(circle at 50% 100%, #111 0%, #000 70%);
+}
 
+.cave-entrance {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Creates the dark, wavy, cave-like shadows */
+    background: linear-gradient(to top, rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.9) 100%),
+                radial-gradient(circle at 50% 0%, #222 0%, #000 70%);
+    box-shadow: inset 0 0 150px 30px #000;
+    z-index: 1;
 }
 
 .banner-content {
     position: relative;
-    z-index: 10;
+    z-index: 2;
+    text-align: center;
+    padding-bottom: 50px; /* Space for the cave floor simulation */
 }
 
 .hero-banner h1 {
-    font-size: 80px;
-    font-weight: 800;
-    margin: 0;
-    letter-spacing: 5px;
-}
-
-.cave-text {
-    font-weight: 400;
-    font-style: italic;
-    color: gold;
-}
-
-.hero-banner p {
-    font-size: 20px;
-    margin-top: 10px;
-    letter-spacing: 2px;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #FFF;
+    text-shadow: 0 0 15px var(--gold);
+    margin-bottom: 20px;
 }
 
 .cta-button {
-    display: inline-block;
-    padding: 15px 30px;
-    margin-top: 30px;
-    background-color: gold;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
+    background-color: var(--gold);
+    color: var(--dark);
+    padding: 12px 30px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
 }
 
 .cta-button:hover {
-    background-color: #ffd700;
+    background-color: #FFEA00;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.cta-button i {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* --- 4. Product Vein Section --- */
+.product-vein {
+    background-color: var(--gray-dark);
+    text-align: center;
+}
+
+.product-vein h2 {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 50px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.product-item {
+    padding: 20px;
+    background-color: var(--dark);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Using CSS to simulate product images on rock bases */
+.product-image {
+    height: 250px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Base Rock Simulation */
+    background-image: linear-gradient(to top, #333 10px, transparent 10px),
+                      radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8);
+}
+
+.watch { 
+    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=WATCH") , linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+}
+.bag {
+    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=BAG"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+}
+.sneakers {
+    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=SHOES"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--gold);
+    margin-top: 10px;
+}
+
+/* --- 5. Journal Section --- */
+.journal-section {
+    background-color: var(--dark);
+}
+
+.journal-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+}
+
+.expedition-col h3 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.expedition-col p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #AAA;
+}
+
+.journal-col h3 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.blog-item {
+    background-color: var(--gray-dark);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+}
+
+.blog-thumb {
+    height: 120px;
+    background-color: #333;
+    border-bottom: 3px solid var(--gold);
+}
+
+.blog-item p {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.blog-item span {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* --- 6. Footer --- */
+.footer {
+    background-color: var(--dark);
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.join-expedition {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.subscribe-box {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.subscribe-box input {
+    padding: 10px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: #FFF;
+    border-radius: 5px 0 0 5px;
+    width: 250px;
+}
+
+.subscribe-box button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--gold);
+    color: #000;
+    font-weight: bold;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.footer-links a {
+    color: #AAA;
+    margin: 0 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.social-icons {
+    margin-top: 20px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons i {
+    color: #AAA;
+    transition: color 0.3s;
+}
+
+.social-icons i:hover {
+    color: var(--gold);
+}
+
+/* --- 7. Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: none; /* Hide for space on very small screens */
+    }
+
+    .nav-icons {
+        order: -1;
+        width: 100%;
+        justify-content: space-around;
+        padding-bottom: 10px;
+    }
+    
+    .journal-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .subscribe-box input {
+        width: 180px;
+    }
 }
