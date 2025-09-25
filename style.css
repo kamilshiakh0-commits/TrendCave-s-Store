@@ -1,9 +1,6 @@
 /* General Body & Typography */
 body {
-    margin: 0;
-    font-family: sans-serif;
-    color: #fff;
-    background-color: #000;
+    margin: 0;     font-family: sans-serif;     color: #fff;     background-color: #000;
 }
 
 /* Header & Navigation */
