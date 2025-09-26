@@ -1,9 +1,10 @@
-/* --- 1. Global Styles & Reset --- */
+/* --- Global Styles & Variables (Flipkart Theme Colors) --- */
 :root {
-    --dark: #121212;
-    --gray-dark: #222;
-    --gold: #FFD700;
-    --text-light: #DDD;
+    --blue: #2874F0;
+    --dark-blue: #174E9A;
+    --white: #FFF;
+    --gray-light: #F1F3F6;
+    --black: #000;
 }
 
 * {
@@ -13,368 +14,315 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--dark);
-    color: var(--text-light);
-    line-height: 1.6;
+    font-family: Roboto, Arial, sans-serif;
+    background-color: var(--gray-light);
+    color: var(--black);
+    line-height: 1.5;
 }
 
 a {
-    color: var(--gold);
     text-decoration: none;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #FFF;
-}
-
-h1, h2, h3 {
-    font-weight: 700;
-    letter-spacing: 1px;
+    color: inherit;
 }
 
 .section {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: var(--white);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-/* --- 2. Header & Navigation --- */
+/* --- 1. Header & Navigation --- */
 .header {
-    background: var(--dark);
-    border-bottom: 1px solid #333;
+    background-color: var(--blue);
+    color: var(--white);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
-.navbar {
-    max-width: 1400px;
+.header-main {
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 15px;
 }
 
 .logo {
     font-size: 20px;
-    font-weight: 900;
-    color: var(--gold);
-    letter-spacing: 2px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-right: 30px;
+}
+
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    background-color: var(--white);
+    border-radius: 2px;
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.search-bar input {
+    border: none;
+    padding: 10px 10px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.search-bar i {
+    color: var(--blue);
+    padding: 10px 15px;
+    cursor: pointer;
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
     gap: 30px;
-}
-
-.nav-links a, .nav-icons i {
-    color: var(--text-light);
     font-size: 14px;
-    transition: color 0.3s;
+    font-weight: 500;
+    margin-left: 50px;
 }
 
-.nav-icons {
+.nav-links a {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 5px;
+    color: var(--white);
 }
 
-/* --- 3. HERO SECTION (CSS Cave Effect) --- */
-.hero-banner {
-    position: relative;
-    height: 90vh;
-    overflow: hidden;
+/* --- 2. Category Strip --- */
+.category-strip {
+    background-color: var(--white);
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.category-item {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.category-item i {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: var(--blue);
+}
+
+/* --- 3. Main Banner --- */
+.main-banner {
+    max-width: 1200px;
+    margin: 10px auto;
+    height: 250px;
+    background-color: var(--dark-blue);
+    background-image: linear-gradient(to right, #174E9A, #2874F0);
+    color: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at 50% 100%, #111 0%, #000 70%);
-}
-
-.cave-entrance {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Creates the dark, wavy, cave-like shadows */
-    background: linear-gradient(to top, rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.9) 100%),
-                radial-gradient(circle at 50% 0%, #222 0%, #000 70%);
-    box-shadow: inset 0 0 150px 30px #000;
-    z-index: 1;
-}
-
-.banner-content {
-    position: relative;
-    z-index: 2;
     text-align: center;
-    padding-bottom: 50px; /* Space for the cave floor simulation */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.hero-banner h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: #FFF;
-    text-shadow: 0 0 15px var(--gold);
+.main-banner h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.main-banner p {
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
-.cta-button {
-    background-color: var(--gold);
-    color: var(--dark);
-    padding: 12px 30px;
-    border-radius: 5px;
+.banner-cta {
+    background-color: var(--white);
+    color: var(--blue);
+    padding: 10px 25px;
+    border-radius: 2px;
     font-weight: bold;
-    letter-spacing: 1px;
-    transition: background-color 0.3s, transform 0.2s;
-    display: inline-flex;
-    align-items: center;
+    transition: background-color 0.3s;
 }
 
-.cta-button:hover {
-    background-color: #FFEA00;
-    color: #000;
-    transform: translateY(-2px);
+.banner-cta:hover {
+    background-color: var(--gray-light);
 }
 
-.cta-button i {
-    margin-left: 10px;
-    font-size: 14px;
-}
-
-/* --- 4. Product Vein Section --- */
-.product-vein {
-    background-color: var(--gray-dark);
-    text-align: center;
-}
-
-.product-vein h2 {
-    font-size: 30px;
-    color: var(--gold);
-    margin-bottom: 50px;
+/* --- 4. Product Grid Section (Deals of the Day) --- */
+.section-title {
+    font-size: 20px;
+    padding: 15px;
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.product-card {
+    flex-basis: 22%; /* 4 items per row */
     text-align: center;
+    padding: 15px 10px;
+    margin: 10px 0;
+    background-color: var(--white);
+    transition: box-shadow 0.3s;
+    cursor: pointer;
 }
 
-.product-item {
-    padding: 20px;
-    background-color: var(--dark);
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    position: relative;
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Using CSS to simulate product images on rock bases */
+/* Placeholder Images (Use a proper image URL if you have one) */
 .product-image {
-    height: 250px;
+    height: 150px;
     width: 100%;
     margin-bottom: 15px;
-    border-radius: 4px;
-    background-position: center bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
-    /* Base Rock Simulation */
-    background-image: linear-gradient(to top, #333 10px, transparent 10px),
-                      radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8);
+    background-color: var(--gray-light);
+    border: 1px solid #EEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.item-1::after { content: "WATCH"; color: #888; }
+.item-2::after { content: "SHIRT"; color: #888; }
+.item-3::after { content: "HEADPHONES"; color: #888; }
+.item-4::after { content: "APPLIANCE"; color: #888; }
 
-.watch { 
-    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=WATCH") , linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
-}
-.bag {
-    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=BAG"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
-}
-.sneakers {
-    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=SHOES"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
-}
 
-.price {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--gold);
-    margin-top: 10px;
-}
-
-/* --- 5. Journal Section --- */
-.journal-section {
-    background-color: var(--dark);
-}
-
-.journal-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 50px;
-}
-
-.expedition-col h3 {
-    color: var(--gold);
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.expedition-col p {
+.product-name {
     font-size: 14px;
-    line-height: 1.8;
-    color: #AAA;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 5px;
 }
 
-.journal-col h3 {
-    color: var(--gold);
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.blog-item {
-    background-color: var(--gray-dark);
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.blog-item:hover {
-    transform: translateY(-5px);
-}
-
-.blog-thumb {
-    height: 120px;
-    background-color: #333;
-    border-bottom: 3px solid var(--gold);
-}
-
-.blog-item p {
-    font-size: 14px;
+.product-price {
+    font-size: 16px;
+    color: var(--black);
     font-weight: bold;
-    padding: 10px;
-    text-align: center;
+    margin-bottom: 5px;
 }
 
-.blog-item span {
-    display: block;
+.product-discount {
     font-size: 12px;
-    color: #888;
-    padding-bottom: 10px;
+    color: green;
+}
+
+/* --- 5. Small Banner --- */
+.small-banner {
+    background-color: #EEE;
+    padding: 20px;
+    margin-bottom: 20px;
     text-align: center;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* --- 6. Footer --- */
 .footer {
-    background-color: var(--dark);
-    padding: 40px 20px;
-    text-align: center;
-    border-top: 1px solid #333;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 30px 20px 10px;
 }
 
-.join-expedition {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--gold);
-    margin-bottom: 30px;
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333;
 }
 
-.subscribe-box {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
+.footer-col h4 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: var(--gray-light);
 }
 
-.subscribe-box input {
-    padding: 10px;
-    border: 1px solid #555;
-    background-color: #222;
-    color: #FFF;
-    border-radius: 5px 0 0 5px;
-    width: 250px;
-}
-
-.subscribe-box button {
-    padding: 10px 20px;
-    border: none;
-    background-color: var(--gold);
-    color: #000;
-    font-weight: bold;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
+.footer-col a {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #AAA;
 }
 
 .footer-bottom {
-    margin-top: 30px;
+    text-align: center;
     padding-top: 20px;
-    border-top: 1px solid #333;
-}
-
-.footer-links a {
+    font-size: 12px;
     color: #AAA;
-    margin: 0 15px;
-    font-size: 13px;
-    text-transform: uppercase;
 }
 
-.social-icons {
-    margin-top: 20px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
 
-.social-icons i {
-    color: #AAA;
-    transition: color 0.3s;
-}
-
-.social-icons i:hover {
-    color: var(--gold);
-}
-
-/* --- 7. Mobile Responsiveness --- */
+/* --- 7. Mobile Responsiveness (Critical for phone view) --- */
 @media (max-width: 768px) {
-    .navbar {
+    .header-main {
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        padding: 10px 10px;
+    }
+
+    .logo {
+        margin-bottom: 5px;
+    }
+
+    .search-bar {
+        order: 3; /* Puts search bar below logo on mobile */
+        width: 100%;
+        max-width: 100%;
+        margin-top: 5px;
     }
 
     .nav-links {
-        display: none;
+        margin-left: auto;
+        gap: 15px;
     }
 
-    .nav-icons {
-        order: -1;
-        width: 100%;
-        justify-content: space-around;
-        padding-bottom: 10px;
+    .category-strip {
+        /* Allow horizontal scroll on small screens */
+        overflow-x: auto; 
+        justify-content: start;
+        gap: 20px;
     }
     
-    .journal-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .category-item {
+        min-width: 60px; /* Ensures category icons are visible */
     }
 
-    .blog-grid {
-        grid-template-columns: 1fr;
+    .main-banner {
+        height: 150px;
+        padding: 15px;
     }
 
-    .subscribe-box input {
-        width: 180px;
+    .main-banner h2 {
+        font-size: 24px;
     }
 
-    .section {
-        padding: 40px 10px; 
-        width: 100%; 
+    .main-banner p {
+        font-size: 14px;
+    }
+
+    .product-card {
+        flex-basis: 45%; /* Two items per row on mobile */
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
     }
 }
