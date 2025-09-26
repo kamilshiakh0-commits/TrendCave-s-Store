@@ -343,30 +343,14 @@ h1, h2, h3 {
 
 /* --- 7. Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
+    /* ... existing mobile code ... */
 
-    .nav-links {
-        display: none; /* Hide for space on very small screens */
+    .section {
+        /* This makes the padding on the sides smaller on phones */
+        padding: 40px 10px; 
     }
-
-    .nav-icons {
-        order: -1;
-        width: 100%;
-        justify-content: space-around;
-        padding-bottom: 10px;
-    }
-    
-    .journal-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .blog-grid {
-        grid-template-columns: 1fr;
+}
+: 1fr;
     }
 
     .subscribe-box input {
