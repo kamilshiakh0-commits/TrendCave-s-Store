@@ -1,12 +1,9 @@
-/* --- Global Styles & Variables (Gold Theme) --- */
+/* --- 1. Global Styles & Reset --- */
 :root {
     --dark: #121212;
     --gray-dark: #222;
     --gold: #FFD700;
     --text-light: #DDD;
-    --white: #FFF;
-    --black: #000;
-    --shadow-color: rgba(255, 215, 0, 0.2); /* Soft gold glow */
 }
 
 * {
@@ -16,340 +13,368 @@
 }
 
 body {
-    font-family: Roboto, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--dark);
     color: var(--text-light);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 a {
-    text-decoration: none;
     color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #FFF;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .section {
     max-width: 1200px;
-    margin: 10px auto;
-    padding: 10px;
-    background-color: var(--gray-dark); /* Dark background for sections */
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    padding: 60px 20px;
 }
 
-/* --- 1. Header & Navigation --- */
+/* --- 2. Header & Navigation --- */
 .header {
-    background-color: var(--black);
-    color: var(--text-light);
+    background: var(--dark);
+    border-bottom: 1px solid #333;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
-.header-main {
-    max-width: 1200px;
+.navbar {
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 15px 20px;
 }
 
 .logo {
     font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-right: 30px;
+    font-weight: 900;
     color: var(--gold);
-}
-
-.search-bar {
-    display: flex;
-    flex-grow: 1;
-    background-color: var(--dark); /* Dark search bar */
-    border-radius: 2px;
-    overflow: hidden;
-    max-width: 500px;
-    border: 1px solid #444;
-}
-
-.search-bar input {
-    border: none;
-    padding: 10px 10px;
-    width: 100%;
-    font-size: 14px;
-    background-color: transparent;
-    color: var(--text-light);
-}
-.search-bar input::placeholder {
-    color: #888;
-}
-
-.search-bar i {
-    color: var(--gold);
-    padding: 10px 15px;
-    cursor: pointer;
+    letter-spacing: 2px;
 }
 
 .nav-links {
+    list-style: none;
     display: flex;
     gap: 30px;
+}
+
+.nav-links a, .nav-icons i {
+    color: var(--text-light);
     font-size: 14px;
-    font-weight: 500;
-    margin-left: 50px;
+    transition: color 0.3s;
 }
 
-.nav-links a {
+.nav-icons {
     display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--text-light);
-}
-.nav-links a:hover {
-    color: var(--gold);
+    gap: 25px;
 }
 
-/* --- 2. Category Strip --- */
-.category-strip {
-    background-color: var(--gray-dark);
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
-    border-bottom: 2px solid var(--gold);
-}
-
-.category-item {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-light);
-    cursor: pointer;
-}
-
-.category-item i {
-    display: block;
-    font-size: 24px;
-    margin-bottom: 5px;
-    color: var(--gold);
-}
-
-/* --- 3. Main Banner --- */
-.main-banner {
-    max-width: 1200px;
-    margin: 10px auto;
-    height: 250px;
-    background-color: var(--dark);
-    background-image: linear-gradient(to right, #111, #222); /* Dark gradient */
-    color: var(--text-light);
+/* --- 3. HERO SECTION (CSS Cave Effect) --- */
+.hero-banner {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: radial-gradient(circle at 50% 100%, #111 0%, #000 70%);
+}
+
+.cave-entrance {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.9) 100%),
+                radial-gradient(circle at 50% 0%, #222 0%, #000 70%);
+    box-shadow: inset 0 0 150px 30px #000;
+    z-index: 1;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    border-radius: 4px;
-    box-shadow: 0 0 10px var(--shadow-color); /* Gold shadow */
+    padding-bottom: 50px;
 }
 
-.main-banner h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: var(--gold);
-}
-
-.main-banner p {
-    font-size: 18px;
+.hero-banner h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #FFF;
+    text-shadow: 0 0 15px var(--gold);
     margin-bottom: 20px;
 }
 
-.banner-cta {
+.cta-button {
     background-color: var(--gold);
-    color: var(--black);
-    padding: 10px 25px;
-    border-radius: 2px;
+    color: var(--dark);
+    padding: 12px 30px;
+    border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
 }
 
-.banner-cta:hover {
+.cta-button:hover {
     background-color: #FFEA00;
+    color: #000;
+    transform: translateY(-2px);
 }
 
-/* --- 4. Product Grid Section (Deals of the Day) --- */
-.section-title {
-    font-size: 20px;
-    padding: 15px;
+.cta-button i {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* --- 4. Product Vein Section --- */
+.product-vein {
+    background-color: var(--gray-dark);
+    text-align: center;
+}
+
+.product-vein h2 {
+    font-size: 30px;
     color: var(--gold);
-    border-bottom: 1px solid #444;
+    margin-bottom: 50px;
 }
 
 .product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px 0;
-}
-
-.product-card {
-    flex-basis: 22%; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
     text-align: center;
-    padding: 15px 10px;
-    margin: 10px 0;
+}
+
+.product-item {
+    padding: 20px;
     background-color: var(--dark);
-    transition: box-shadow 0.3s;
-    cursor: pointer;
-    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
-.product-card:hover {
-    box-shadow: 0 4px 8px var(--shadow-color);
-}
-
-/* Placeholder Images */
+/* Using CSS to simulate product images on rock bases */
 .product-image {
-    height: 150px;
+    height: 250px;
     width: 100%;
     margin-bottom: 15px;
+    border-radius: 4px;
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Base Rock Simulation */
+    background-image: linear-gradient(to top, #333 10px, transparent 10px),
+                      radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8);
+}
+
+.watch { 
+    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=WATCH") , linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+}
+.bag {
+    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=BAG"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+}
+.sneakers {
+    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=SHOES"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--gold);
+    margin-top: 10px;
+}
+
+/* --- 5. Journal Section --- */
+.journal-section {
+    background-color: var(--dark);
+}
+
+.journal-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+}
+
+.expedition-col h3 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.expedition-col p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #AAA;
+}
+
+.journal-col h3 {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.blog-item {
+    background-color: var(--gray-dark);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.blog-item:hover {
+    transform: translateY(-5px);
+}
+
+.blog-thumb {
+    height: 120px;
     background-color: #333;
     border-bottom: 3px solid var(--gold);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
-.item-1::after { content: "WATCH"; color: var(--gold); }
-.item-2::after { content: "SHIRT"; color: var(--gold); }
-.item-3::after { content: "HEADPHONES"; color: var(--gold); }
-.item-4::after { content: "APPLIANCE"; color: var(--gold); }
 
-
-.product-name {
+.blog-item p {
     font-size: 14px;
-    font-weight: 500;
-    color: var(--text-light);
-    margin-bottom: 5px;
-}
-
-.product-price {
-    font-size: 16px;
-    color: var(--gold);
     font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.product-discount {
-    font-size: 12px;
-    color: #AAA; /* Use a muted color for discount text */
-}
-
-/* --- 5. Small Banner --- */
-.small-banner {
-    background-color: var(--gray-dark);
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 10px;
     text-align: center;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
-.small-banner h3 {
-    color: var(--gold);
+
+.blog-item span {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    padding-bottom: 10px;
+    text-align: center;
 }
 
 /* --- 6. Footer --- */
 .footer {
-    background-color: var(--black);
-    color: var(--text-light);
-    padding: 30px 20px 10px;
+    background-color: var(--dark);
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #333;
 }
 
-.footer-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #333;
-}
-
-.footer-col h4 {
-    font-size: 14px;
-    margin-bottom: 15px;
+.join-expedition {
+    font-size: 18px;
+    font-weight: bold;
     color: var(--gold);
+    margin-bottom: 30px;
 }
 
-.footer-col a {
-    display: block;
-    font-size: 12px;
-    margin-bottom: 8px;
-    color: #AAA;
+.subscribe-box {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
 }
-.footer-col a:hover {
-    color: var(--text-light);
+
+.subscribe-box input {
+    padding: 10px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: #FFF;
+    border-radius: 5px 0 0 5px;
+    width: 250px;
+}
+
+.subscribe-box button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--gold);
+    color: #000;
+    font-weight: bold;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
 }
 
 .footer-bottom {
-    text-align: center;
+    margin-top: 30px;
     padding-top: 20px;
-    font-size: 12px;
-    color: #AAA;
+    border-top: 1px solid #333;
 }
 
+.footer-links a {
+    color: #AAA;
+    margin: 0 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
 
-/* --- 7. Mobile Responsiveness (Critical for phone view) --- */
+.social-icons {
+    margin-top: 20px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons i {
+    color: #AAA;
+    transition: color 0.3s;
+}
+
+.social-icons i:hover {
+    color: var(--gold);
+}
+
+/* --- 7. Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    .header-main {
+    .navbar {
         flex-wrap: wrap;
-        padding: 10px 10px;
-    }
-
-    .logo {
-        margin-bottom: 5px;
-    }
-
-    .search-bar {
-        order: 3;
-        width: 100%;
-        max-width: 100%;
-        margin-top: 5px;
-    }
-
-    .nav-links {
-        margin-left: auto;
+        justify-content: center;
         gap: 15px;
     }
 
-    .category-strip {
-        overflow-x: auto; 
-        justify-content: start;
-        gap: 20px;
+    .nav-links {
+        display: none;
+    }
+
+    .nav-icons {
+        order: -1;
+        width: 100%;
+        justify-content: space-around;
+        padding-bottom: 10px;
     }
     
-    .category-item {
-        min-width: 60px;
+    .journal-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
-    .main-banner {
-        height: 150px;
-        padding: 15px;
+    .blog-grid {
+        grid-template-columns: 1fr;
     }
 
-    .main-banner h2 {
-        font-size: 24px;
+    .subscribe-box input {
+        width: 180px;
     }
 
-    .main-banner p {
-        font-size: 14px;
-    }
-
-    .product-card {
-        flex-basis: 45%; 
-    }
-
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    
-    /* FIX FOR WIDER PHONE VIEW AND EMPTY SPACE */
+    /* This padding and width fix the narrow and off-center issues on your phone! */
     .section {
-        padding: 40px 10px;
+        padding: 40px 10px; 
         width: 100%;
     }
 }
