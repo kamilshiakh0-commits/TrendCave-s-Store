@@ -350,7 +350,7 @@ h1, h2, h3 {
     }
 
     .nav-links {
-        display: none; /* Hide for space on very small screens */
+        display: none;
     }
 
     .nav-icons {
@@ -373,8 +373,8 @@ h1, h2, h3 {
         width: 180px;
     }
 
-    /* FIX FOR WIDER PHONE VIEW */
     .section {
         padding: 40px 10px; 
+        width: 100%; 
     }
 }
