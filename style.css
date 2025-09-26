@@ -1,9 +1,10 @@
 /* --- Global Styles & Variables (Flipkart Theme Colors) --- */
 :root {
-    --blue: #2874F0;
-    --dark-blue: #174E9A;
+    --gold: #FFD700;
+    --gold-dark: #C9A000;
+    --dark: #1F1F1F;
+    --gray-dark: #2E2E2E;
     --white: #FFF;
-    --gray-light: #F1F3F6;
     --black: #000;
 }
 
@@ -15,8 +16,8 @@
 
 body {
     font-family: Roboto, Arial, sans-serif;
-    background-color: var(--gray-light);
-    color: var(--black);
+    background-color: var(--gray-dark); /* Use a darker background */
+    color: var(--white);
     line-height: 1.5;
 }
 
@@ -35,7 +36,7 @@ a {
 
 /* --- 1. Header & Navigation --- */
 .header {
-    background-color: var(--blue);
+    background-color: var(--dark);
     color: var(--white);
     position: sticky;
     top: 0;
@@ -125,8 +126,7 @@ a {
     max-width: 1200px;
     margin: 10px auto;
     height: 250px;
-    background-color: var(--dark-blue);
-    background-image: linear-gradient(to right, #174E9A, #2874F0);
+    background-image: linear-gradient(to right, var(--gray-dark), var(--dark)); 
     color: var(--white);
     display: flex;
     flex-direction: column;
@@ -134,7 +134,7 @@ a {
     align-items: center;
     text-align: center;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .main-banner h2 {
@@ -322,7 +322,10 @@ a {
         flex-basis: 45%; /* Two items per row on mobile */
     }
 
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
-    }
+    .footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 30px 20px 10px;
+}
+
 }
