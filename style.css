@@ -82,28 +82,18 @@ h1, h2, h3 {
     gap: 25px;
 }
 
-/* --- 3. HERO SECTION (CSS Cave Effect) --- */
+/* --- 3. HERO SECTION (Black background with Gold Glow) --- */
 .hero-banner {
     position: relative;
-    height: 90vh;
+    height: 60vh; /* Reduced height as the cave background image is gone */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at 50% 100%, #111 0%, #000 70%);
-}
-
-.cave-entrance {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.9) 100%),
-                radial-gradient(circle at 50% 0%, #222 0%, #000 70%);
-    box-shadow: inset 0 0 150px 30px #000;
-    z-index: 1;
+    background-color: #000;
+    /* Simulate the gold glow without an image */
+    box-shadow: inset 0px -50px 80px -10px rgba(255, 215, 0, 0.1); 
 }
 
 .banner-content {
@@ -170,29 +160,17 @@ h1, h2, h3 {
     position: relative;
 }
 
-/* Using CSS to simulate product images on rock bases */
+/* Product Image Placeholder - Now just a nice dark box with gold base */
 .product-image {
     height: 250px;
     width: 100%;
     margin-bottom: 15px;
     border-radius: 4px;
-    background-position: center bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
-    /* Base Rock Simulation */
-    background-image: linear-gradient(to top, #333 10px, transparent 10px),
-                      radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8);
-}
-
-.watch { 
-    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=WATCH") , linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
-}
-.bag {
-    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=BAG"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
-}
-.sneakers {
-    background-image: url("https://via.placeholder.com/200x150/222/FFF?text=SHOES"), linear-gradient(to top, #333 10px, transparent 10px), radial-gradient(ellipse at 50% 90%, #111 50%, #222 100%);
+    background-color: #333; /* Solid dark color */
+    border-bottom: 5px solid var(--gold); /* Gold base line */
+    /* Remove all broken image and rock styling */
+    background-image: none;
+    box-shadow: none;
 }
 
 .price {
@@ -372,7 +350,6 @@ h1, h2, h3 {
         width: 180px;
     }
 
-    /* This padding and width fix the narrow and off-center issues on your phone! */
     .section {
         padding: 40px 10px; 
         width: 100%;
