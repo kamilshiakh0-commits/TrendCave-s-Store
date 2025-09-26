@@ -3,107 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Shop - New Finds</title>
+    <title>TrendCave - Unearth Tomorrow's Style</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <header class="header">
-        <div class="header-main">
-            <div class="logo">MyShop</div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for products, brands and more">
+        <nav class="navbar">
+            <div class="logo">TRENDCAVE</div>
+            <ul class="nav-links">
+                <li><a href="#">Discover</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">New Finds</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
                 <i class="fas fa-search"></i>
+                <i class="fas fa-shopping-bag"></i>
+                <i class="fas fa-user"></i>
             </div>
-            <nav class="nav-links">
-                <a href="#"><i class="fas fa-user"></i> Login</a>
-                <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
-            </nav>
-        </div>
+        </nav>
     </header>
 
     <main>
-        <section class="category-strip">
-            <div class="category-item"><i class="fas fa-mobile-alt"></i> Mobiles</div>
-            <div class="category-item"><i class="fas fa-tshirt"></i> Fashion</div>
-            <div class="category-item"><i class="fas fa-home"></i> Home</div>
-            <div class="category-item"><i class="fas fa-couch"></i> Furniture</div>
-            <div class="category-item"><i class="fas fa-utensils"></i> Groceries</div>
-            <div class="category-item"><i class="fas fa-bolt"></i> Electronics</div>
+        <section class="hero-banner">
+            <div class="cave-entrance">
+                <div class="arch"></div>
+            </div>
+            <div class="banner-content">
+                <h1>TRENDCAVE</h1>
+                <a href="#" class="cta-button">UNEARTH THE TRENDS <i class="fas fa-chevron-right"></i></a>
+            </div>
         </section>
 
-        <section class="main-banner">
-            <h2>Big Savings Event!</h2>
-            <p>Shop top brands at up to 70% off. Limited Time Offer!</p>
-            <a href="#" class="banner-cta">Shop Now</a>
-        </section>
-
-        <section class="section product-section">
-            <h2 class="section-title">Deals of the Day</h2>
+        <section class="section product-vein">
+            <h2>THE GOLD VEIN</h2>
             <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image item-1"></div>
-                    <p class="product-name">Smartwatch X-Pro</p>
-                    <p class="product-price">₹1,999</p>
-                    <p class="product-discount">Extra 10% Off</p>
+                <div class="product-item">
+                    <div class="product-image watch"></div>
+                    <p class="price">$1480</p>
                 </div>
-                <div class="product-card">
-                    <div class="product-image item-2"></div>
-                    <p class="product-name">Men's T-Shirt Pack</p>
-                    <p class="product-price">₹599</p>
-                    <p class="product-discount">Best Seller</p>
+                <div class="product-item">
+                    <div class="product-image bag"></div>
+                    <p class="price">$1980</p>
                 </div>
-                <div class="product-card">
-                    <div class="product-image item-3"></div>
-                    <p class="product-name">Bluetooth Headphones</p>
-                    <p class="product-price">₹1,250</p>
-                    <p class="product-discount">Flat 50% Off</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-image item-4"></div>
-                    <p class="product-name">Home Blender</p>
-                    <p class="product-price">₹2,499</p>
-                    <p class="product-discount">Free Shipping</p>
+                <div class="product-item">
+                    <div class="product-image sneakers"></div>
+                    <p class="price">$1300</p>
                 </div>
             </div>
         </section>
 
-        <section class="section small-banner">
-            <h3>New Collection Arrival!</h3>
+        <section class="section journal-section">
+            <div class="journal-content">
+                <div class="expedition-col">
+                    <h3>OUR EXPEDITION</h3>
+                    <p>At TrendCave, we are more than curators. Delving deep into the digital world, we bring you the latest in style, design, tech, and art on our journey as our discover treasures unseen.</p>
+                </div>
+                <div class="journal-col">
+                    <h3>THE JOURNAL</h3>
+                    <div class="blog-grid">
+                        <div class="blog-item">
+                            <div class="blog-thumb tech"></div>
+                            <p>5 TRENDS IN TECH</p>
+                            <span>STORIES</span>
+                        </div>
+                        <div class="blog-item">
+                            <div class="blog-thumb streetwear"></div>
+                            <p>FUTURE OF STREETWEAR</p>
+                            <span>CONCEPTS</span>
+                        </div>
+                        <div class="blog-item">
+                            <div class="blog-thumb design"></div>
+                            <p>DESIGN FOR TOMORROW</p>
+                            <span>RESEARCH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        
     </main>
 
     <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>ABOUT</h4>
-                <a href="#">Contact Us</a>
-                <a href="#">About Us</a>
-                <a href="#">Careers</a>
-            </div>
-            <div class="footer-col">
-                <h4>HELP</h4>
-                <a href="#">Payments</a>
-                <a href="#">Shipping</a>
-                <a href="#">Cancellation & Returns</a>
-            </div>
-            <div class="footer-col">
-                <h4>POLICY</h4>
-                <a href="#">Return Policy</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Privacy</a>
-            </div>
-            <div class="footer-col">
-                <h4>SOCIAL</h4>
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">YouTube</a>
+        <div class="join-expedition">
+            JOIN THE EXPEDITION
+            <div class="subscribe-box">
+                <input type="email" placeholder="Subscribe">
+                <button>Subscribe</button>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2025 MyShop. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-tiktok"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
         </div>
     </footer>
 
