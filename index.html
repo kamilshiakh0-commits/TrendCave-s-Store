@@ -25,7 +25,6 @@
             background-color: var(--color-primary);
             color: var(--color-text);
             text-align: center;
-            /* 💥 NEW: Website ki height ab bahut badi ho gayi hai! */
             height: auto; 
             min-height: 400vh; 
         }
@@ -233,4 +232,329 @@
         }
 
         .product-story {
-            font-style: italic
+            font-style: italic;
+            color: var(--color-accent-neon);
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-family: 'Michroma', sans-serif; 
+        }
+
+        /* ------------------------------------------- */
+        /* --- MANGA SCROLLS SECTION (NEW) --- */
+        /* ------------------------------------------- */
+        .manga-scrolls-section {
+            background: var(--color-secondary);
+        }
+
+        .scroll-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .scroll-post {
+            background: var(--color-primary);
+            width: 30%;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: left;
+            border-left: 5px solid var(--color-accent-pink);
+            transition: background 0.3s;
+        }
+
+        .scroll-post:hover {
+            background: #1e0d3f; /* Slightly lighter primary */
+        }
+
+        .scroll-post h4 {
+            color: var(--color-accent-neon);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .scroll-post a {
+            color: var(--color-accent-pink);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ------------------------------------------- */
+        /* --- THE FORGE SECTION (NEW IMMERSIVE) --- */
+        /* ------------------------------------------- */
+        .forge-section {
+            padding: 150px 50px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1511376777868-611b54f6fa44?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover no-repeat fixed;
+            text-align: center;
+            border-top: 5px double var(--color-accent-neon);
+            border-bottom: 5px double var(--color-accent-pink);
+        }
+
+        .forge-section h2 {
+            font-size: 80px;
+            color: #ffffff;
+            text-shadow: 0 0 20px var(--color-accent-pink), 0 0 40px var(--color-accent-neon);
+        }
+
+        .forge-section p {
+            font-size: 28px;
+            color: #ccc;
+            margin-bottom: 40px;
+            font-family: 'Michroma', sans-serif;
+        }
+        
+        .forge-cta {
+            background: var(--color-accent-neon);
+            color: var(--color-primary);
+            padding: 20px 60px;
+            border: none;
+            border-radius: 5px;
+            font-size: 26px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 30px var(--color-accent-neon);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .forge-cta:hover {
+            background: var(--color-accent-pink);
+            box-shadow: 0 0 30px var(--color-accent-pink);
+        }
+
+
+        /* ------------------------------------------- */
+        /* --- ANIME CHARACTER OVERLAY (RETAINED) --- */
+        /* ------------------------------------------- */
+
+        #character-overlay {
+            position: fixed;
+            bottom: -200px;
+            left: 50px; 
+            transform: translateX(0);
+            width: 250px;
+            height: auto;
+            z-index: 9999;
+            transition: bottom 1s ease-out;
+            filter: drop-shadow(0 0 20px var(--color-accent-pink));
+        }
+
+        #character-overlay.show {
+            bottom: 0px; 
+        }
+
+        #character-overlay img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #character-bubble {
+          position: absolute;
+          background: var(--color-accent-neon); 
+          color: var(--color-primary);
+          padding: 10px 15px;
+          border-radius: 15px;
+          font-weight: bold;
+          box-shadow: 0 0 20px var(--color-accent-neon);
+          opacity: 0;
+          pointer-events: none;
+          z-index: 99999;
+          white-space: nowrap;
+          bottom: 70%; 
+          left: 100%; 
+          transform: translateX(10px); 
+          font-family: 'Michroma', sans-serif; 
+        }
+        #character-bubble.show {
+          opacity: 1;
+          transform: translateX(10px) translateY(0) scale(1);
+        }
+        
+        /* ------------------------------------------- */
+        /* --- FOOTER --- */
+        /* ------------------------------------------- */
+        footer {
+            padding: 30px;
+            background: var(--color-secondary);
+            border-top: 1px solid var(--color-accent-pink);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DIMENSIONAL NEXUS</div>
+        <nav>
+            <a href="#" class="nav-orb">Hero Gallery</a>
+            <a href="#" class="nav-orb">Manga Scrolls</a>
+            <a href="#" class="nav-orb">Figure Forge</a>
+            <a href="#" class="nav-orb">Summoning Circle (Cart)</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Unleash Your Inner Hero</h1>
+        <p>Your journey begins at the heart of the multiverse.</p>
+        <button class="cta-btn">Begin Summoning</button>
+    </section>
+
+    <section class="category-section">
+        <h2>Dimensional Gateways</h2>
+        <p style="font-size: 18px; color: var(--color-accent-pink);">Explore realms of fantasy, sci-fi, and action.</p>
+        <div class="category-grid">
+            <div class="category-card">
+                <h3>Shonen Realm</h3>
+                <p>Action-packed gear and collectibles from the greatest adventures.</p>
+                <a href="#">// Access Portal</a>
+            </div>
+            <div class="category-card">
+                <h3>Mecha Bay</h3>
+                <p>Advanced tech, models, and figures for mech lovers.</p>
+                <a href="#">// Access Portal</a>
+            </div>
+            <div class="category-card">
+                <h3>Fantasy Scrolls</h3>
+                <p>Magic spells, scrolls, and mystical artifacts.</p>
+                <a href="#">// Access Portal</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <h2>Legendary Artifacts</h2>
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517976936306-037346399153" alt="Cosmic Orb">
+                <h3>The Final Sword</h3>
+                <p class="product-story">A weapon forged in the fires of an ancient dimension. +99 ATK.</p>
+                <p>Price: 450 Credits</p>
+                <button class="cta-btn" style="padding: 10px 20px;">Acquire Power</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542856230-f5651c6c518b" alt="Galaxy Powder">
+                <h3>Chrono Dust</h3>
+                <p class="product-story">Finely ground remnants of time itself. Wear it to glitch reality.</p>
+                <p>Price: 95 Credits</p>
+                <button class="cta-btn" style="padding: 10px 20px;">Acquire Power</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1498146740611-645366436f52" alt="Aether Key">
+                <h3>Pixelated Heart</h3>
+                <p class="product-story">The core of a forgotten hero. Unlocks the hidden ending.</p>
+                <p>Price: 1200 Credits</p>
+                <button class="cta-btn" style="padding: 10px 20px;">Acquire Power</button>
+            </div>
+             <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1518020382343-4e9411603588" alt="Cyber Gauntlet">
+                <h3>The Cyber Gauntlet</h3>
+                <p class="product-story">High-tech hand gear for ultimate digital warfare. +50 DEF.</p>
+                <p>Price: 650 Credits</p>
+                <button class="cta-btn" style="padding: 10px 20px;">Acquire Power</button>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="manga-scrolls-section">
+        <h2>Manga Scrolls // Latest Transmission</h2>
+        <div class="scroll-container">
+            <div class="scroll-post">
+                <h4>Top 5 Anime Worlds to Live In</h4>
+                <p>A deep dive into the best and most dangerous fictional dimensions.</p>
+                <a href="#">Read Scroll //</a>
+            </div>
+            <div class="scroll-post">
+                <h4>Figure Painting: Guide to Hyper Detail</h4>
+                <p>Advanced techniques to make your figures look battle-ready.</p>
+                <a href="#">Read Scroll //</a>
+            </div>
+            <div class="scroll-post">
+                <h4>Who is the Strongest Hero of Nexus-7?</h4>
+                <p>Analyzing the power levels of the new Dimension's top contenders.</p>
+                <a href="#">Read Scroll //</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="forge-section">
+        <h2>THE FIGURE FORGE</h2>
+        <p>Your imagination is the only limit. Design your custom Figure or Prop now.</p>
+        <button class="forge-cta">Start Forging Your Legend</button>
+    </section>
+
+    <footer>
+        &copy; 2025 DIMENSIONAL NEXUS. Your Saga Continues. | Privacy Portal | Hero Support
+    </footer>
+
+    <div id="character-overlay">
+        <img id="anime-character-image" src="https://i.ibb.co/L5Qx6z0/anime-hero-1.png" alt="Anime Character">
+        <div id="character-bubble"></div>
+    </div>
+    
+    <script>
+        // *** ANIME CHARACTER IMAGE LINKS ***
+        const CHARACTER_IMAGES = [
+            "https://i.ibb.co/L5Qx6z0/anime-hero-1.png", // Example Hero 1
+            "https://i.ibb.co/c1b2pP0/anime-hero-2.png", // Example Hero 2
+            "https://i.ibb.co/9q09k2C/anime-hero-3.png"  // Example Hero 3
+        ];
+
+        // Character messages
+        const CHARACTER_MESSAGES = [
+            "Hey, adventurer! Don't miss out on these epic items!",
+            "Psst! A true hero knows when to power up! Buy now!",
+            "My senses tell me you need these artifacts!",
+            "The fate of your quest depends on this gear!",
+            "Even I need new equipment sometimes. Check these out!",
+            "Only the worthy may acquire these treasures!",
+            "Don't be a side character! Grab your legendary gear!"
+        ];
+
+        const characterOverlay = document.getElementById('character-overlay');
+        const animeCharacterImage = document.getElementById('anime-character-image');
+        const characterBubble = document.getElementById('character-bubble');
+
+        let currentCharacterIndex = 0;
+
+        function showCharacterWithBubble() {
+            currentCharacterIndex = Math.floor(Math.random() * CHARACTER_IMAGES.length);
+            animeCharacterImage.src = CHARACTER_IMAGES[currentCharacterIndex];
+            
+            characterBubble.textContent = CHARACTER_MESSAGES[Math.floor(Math.random() * CHARACTER_MESSAGES.length)];
+            
+            characterOverlay.classList.add('show'); 
+            setTimeout(() => {
+                characterBubble.classList.add('show');
+            }, 500);
+            
+            setTimeout(hideCharacter, 6000); 
+        }
+
+        function hideCharacter() {
+            characterBubble.classList.remove('show');
+            setTimeout(() => {
+                characterOverlay.classList.remove('show'); 
+            }, 300); 
+        }
+
+        // --- Parallax Effect Logic (Retained) ---
+        window.addEventListener('scroll', function() {
+            const scrolled = window.scrollY;
+            document.querySelector('.hero').style.backgroundPosition = 'center ' + (-scrolled * 0.5) + 'px' + ' fixed';
+        });
+
+        // Initial call after page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Har 10 seconds mein naya character dikhao
+            setInterval(showCharacterWithBubble, 10000); 
+            // Pehla character 2 seconds baad dikhao
+            setTimeout(showCharacterWithBubble, 2000);
+        });
+    </script>
+</body>
+</html>
