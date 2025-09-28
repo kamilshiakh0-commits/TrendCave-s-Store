@@ -1,377 +1,206 @@
-<!-- Save this as index.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>TrendCave — Unearth the Trends</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#040404;
-    --gold-1:#ffd700;
-    --gold-2:#ffdf7a;
-    --muted:#bdbdbd;
-    --card:#0f0f0f;
-    --glass: rgba(255,255,255,0.03);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:"Poppins",sans-serif;
-    background: linear-gradient(180deg, var(--bg) 0%, #060606 100%);
-    color:#fff;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    overflow-x:hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrendCave</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #ffd700;
+      text-align: center;
+    }
 
-  /* HEADER */
-  header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 36px;
-    border-bottom:1px solid rgba(255,215,0,0.06);
-    position:sticky;
-    top:0;
-    z-index:30;
-    background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
-  }
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-  }
-  .logo .mark{
-    width:46px;height:46px;border-radius:8px;
-    background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
-    box-shadow:0 4px 18px rgba(255,215,0,0.08), inset 0 -6px 18px rgba(0,0,0,0.25);
-    display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;
-    font-size:18px;
-  }
-  .logo h1{font-size:20px;margin:0;color:var(--gold-1);letter-spacing:1px}
-  nav a{
-    color:#ddd;text-decoration:none;margin-left:18px;font-weight:600;font-size:14px;opacity:0.98;
-  }
-  nav a:hover{color:var(--gold-1)}
+    header {
+      padding: 20px;
+      background: linear-gradient(90deg, #000, #111);
+      color: #ffd700;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-  /* HERO */
-  .hero{
-    min-height:66vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:60px 20px;
-    position:relative;
-  }
-  .hero-inner{
-    max-width:1100px;
-    backdrop-filter: blur(2px);
-    padding:28px;
-  }
-  .hero h2{
-    font-size:48px;
-    margin:0;
-    color:var(--gold-1);
-    text-shadow:0 6px 28px rgba(255,215,0,0.06);
-    letter-spacing:1px;
-  }
-  .hero p{
-    margin:12px 0 20px;color:var(--muted);font-size:18px;
-  }
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{
-    background: linear-gradient(90deg,var(--gold-1),var(--gold-2));
-    color:#000;padding:12px 22px;border-radius:10px;border:none;font-weight:700;
-    cursor:pointer;box-shadow:0 8px 30px rgba(255,215,0,0.08);transition:transform .18s ease;
-  }
-  .btn:hover{transform:translateY(-4px)}
-  .ghost-cta{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:12px 20px;border-radius:10px}
+    .hero {
+      padding: 60px 20px;
+    }
 
-  /* FEATURED CATEGORIES */
-  .categories{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:20px;
-    padding:48px 36px;
-    max-width:1200px;margin:0 auto;
-  }
-  .cat{
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border:1px solid rgba(255,215,0,0.06);
-    padding:18px;border-radius:14px;position:relative;overflow:hidden;
-    display:flex;flex-direction:column;align-items:flex-start;gap:12px;
-    transition:transform .28s ease, box-shadow .28s ease;
-  }
-  .cat:hover{transform:translateY(-8px);box-shadow:0 18px 60px rgba(255,215,0,0.04)}
-  .cat img{width:100%;height:160px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-  .cat h3{color:var(--gold-1);margin:6px 0;font-size:18px}
-  .cat p{color:var(--muted);font-size:14px;margin:0}
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
 
-  /* PRODUCTS GRID (home highlights) */
-  .section-title{max-width:1200px;margin:12px auto 8px;padding:0 36px;font-size:20px;color:var(--gold-1);font-weight:700}
-  .products-grid{
-    max-width:1200px;margin:18px auto 60px;padding:0 36px;
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;
-  }
-  .product-card{
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-    border-radius:12px;border:1px solid rgba(255,215,0,0.06);
-    overflow:hidden;position:relative;transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .product-card:hover{transform:translateY(-8px);box-shadow:0 18px 60px rgba(255,215,0,0.04)}
-  .product-thumb{width:100%;height:180px;object-fit:cover;display:block}
-  .product-body{padding:14px}
-  .product-title{font-size:16px;color:var(--gold-1);margin-bottom:8px}
-  .product-price{color:var(--muted);margin-bottom:12px}
-  .product-actions{display:flex;gap:10px;align-items:center}
-  .buy-btn{background:linear-gradient(90deg,var(--gold-2),var(--gold-1));border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700}
-  .wish-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:#fff}
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
 
-  /* PET MASCOT */
-  .pet{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    width:96px;height:96px;
-    z-index:9999;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;
-    transition:transform .3s ease;
-  }
-  .pet .bubble{
-    position:absolute;right:110%;bottom:60%;
-    background:linear-gradient(180deg, #111, rgba(255,215,0,0.06));
-    padding:10px 14px;border-radius:14px;border:1px solid rgba(255,215,0,0.12);
-    color:var(--gold-2);font-weight:700;font-size:13px;opacity:0;transform:translateY(8px) scale(.95);
-    transition:all .35s ease;pointer-events:none;
-    white-space:nowrap;
-  }
-  .pet .mascot{
-    width:72px;height:72px;border-radius:18px;
-    background:linear-gradient(180deg,var(--gold-1),var(--gold-2));
-    display:flex;align-items:center;justify-content:center;color:#000;font-weight:800;
-    box-shadow:0 10px 30px rgba(255,215,0,0.12);
-  }
-  .pet.jumping{transform:translateY(-14px) rotate(-6deg)}
-  .pet.jumping .bubble{opacity:1;transform:translateY(0) scale(1)}
+    .btn {
+      background: #ffd700;
+      color: #000;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
 
-  /* FOOTER */
-  footer{
-    padding:28px 18px;background:#000;border-top:1px solid rgba(255,215,0,0.06);
-    text-align:center;color:var(--muted);
-  }
-  footer .links a{color:var(--gold-1);text-decoration:none;margin:0 8px;font-weight:600}
+    .btn:hover {
+      transform: scale(1.05);
+      background: #e6c200;
+    }
 
-  /* ANIMATIONS & FADE INS */
-  .fade-in{opacity:0;transform:translateY(12px);transition:all .7s cubic-bezier(.2,.9,.2,1)}
-  .fade-in.show{opacity:1;transform:none}
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 10px;
+    }
 
-  /* RESPONSIVE */
-  @media (max-width:880px){
-    .hero h2{font-size:34px}
-    .hero p{font-size:16px}
-    header{padding:12px 16px}
-    .logo h1{font-size:18px}
-    .pet{right:12px;bottom:12px;width:72px;height:72px}
-    .pet .mascot{width:56px;height:56px;border-radius:12px}
-  }
-</style>
+    .category {
+      background: #111;
+      border: 2px solid #ffd700;
+      border-radius: 12px;
+      margin: 15px;
+      padding: 20px;
+      width: 260px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .category:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px #ffd700;
+    }
+
+    .category h3 {
+      margin-bottom: 12px;
+    }
+
+    .pet {
+      position: fixed;
+      bottom: 50px;
+      left: 50px;
+      width: 80px;
+      height: 80px;
+      font-size: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff3;
+      border-radius: 50%;
+      z-index: 9999;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .speech-bubble {
+      position: absolute;
+      background: #ffd700;
+      color: #000;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 99999;
+    }
+    .speech-bubble.show {
+      opacity: 1;
+      transform: translateY(-6px) scale(1);
+    }
+
+    footer {
+      padding: 20px;
+      background: #111;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    TrendCave
+  </header>
 
-<header>
-  <div class="logo">
-    <div class="mark">TC</div>
-    <h1>TrendCave</h1>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <section class="hero">
+    <h1>Welcome to TrendCave</h1>
+    <p>Explore Premium Products: Kids Toys, Female Makeup & More</p>
+    <button class="btn">Shop Now</button>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner fade-in" data-delay="0">
-    <h2>TrendCave — Unearth the Trends</h2>
-    <p>Luxury finds, curated collections — for those who seek the extraordinary.</p>
-    <div class="cta-row">
-      <button class="btn" onclick="location.href='shop.html'">Explore Shop</button>
-      <button class="ghost-cta" onclick="location.href='about.html'">Our Story</button>
+  <section class="categories">
+    <div class="category">
+      <h3>Kids Toys</h3>
+      <p>Fun, safe, and exciting toys for children.</p>
+      <button class="btn">Buy Now</button>
     </div>
-  </div>
-</section>
-
-<!-- CATEGORIES -->
-<section class="categories fade-in" data-delay="150">
-  <article class="cat">
-    <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f2e9d1d5d2f9f8b9b9c7c1ce2a2b0a1" alt="Kids Toys">
-    <h3>Kids Toys</h3>
-    <p>Playful, safe and curated toys for every age.</p>
-    <div style="margin-top:auto"><button class="btn" onclick="location.href='shop.html?cat=toys'">Shop Kids</button></div>
-  </article>
-
-  <article class="cat">
-    <img src="https://images.unsplash.com/photo-1600180758890-3a45d9b8d5c9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8b6c7d1e4a5b6c7d8e9f0a1b2c3d4e5f" alt="Female Makeup">
-    <h3>Female Makeup</h3>
-    <p>Premium beauty picks — curated for every look.</p>
-    <div style="margin-top:auto"><button class="btn" onclick="location.href='shop.html?cat=makeup'">Shop Makeup</button></div>
-  </article>
-</section>
-
-<!-- HIGHLIGHT PRODUCTS -->
-<h3 class="section-title">Featured Picks</h3>
-<section class="products-grid fade-in" data-delay="300">
-  <!-- Product 1 -->
-  <div class="product-card">
-    <img class="product-thumb" src="https://images.unsplash.com/photo-1585386959984-a4155222f86a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f3f3e4e6bd8d9c6e1f6f9b0c2a3d4e5" alt="Toy Car">
-    <div class="product-body">
-      <div class="product-title">Racing Toy Car</div>
-      <div class="product-price">₹899</div>
-      <div class="product-actions">
-        <button class="buy-btn" data-product="Racing Toy Car" onclick="goToProduct(this)">Buy Now</button>
-        <button class="wish-btn">Wishlist</button>
-      </div>
+    <div class="category">
+      <h3>Female Makeup</h3>
+      <p>Premium beauty products for every occasion.</p>
+      <button class="btn">Buy Now</button>
     </div>
-  </div>
-
-  <!-- Product 2 -->
-  <div class="product-card">
-    <img class="product-thumb" src="https://images.unsplash.com/photo-1541534401786-1d8b8f1b1f77?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7" alt="Makeup Set">
-    <div class="product-body">
-      <div class="product-title">Velvet Lip Set</div>
-      <div class="product-price">₹1299</div>
-      <div class="product-actions">
-        <button class="buy-btn" data-product="Velvet Lip Set" onclick="goToProduct(this)">Buy Now</button>
-        <button class="wish-btn">Wishlist</button>
-      </div>
+    <div class="category">
+      <h3>Accessories</h3>
+      <p>Stylish items to complete your look.</p>
+      <button class="btn">Buy Now</button>
     </div>
-  </div>
+  </section>
 
-  <!-- Product 3 -->
-  <div class="product-card">
-    <img class="product-thumb" src="https://images.unsplash.com/photo-1513708929622-2f7a6f0b7e84?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=c1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6" alt="Building Blocks">
-    <div class="product-body">
-      <div class="product-title">Creative Blocks Set</div>
-      <div class="product-price">₹699</div>
-      <div class="product-actions">
-        <button class="buy-btn" data-product="Creative Blocks Set" onclick="goToProduct(this)">Buy Now</button>
-        <button class="wish-btn">Wishlist</button>
-      </div>
-    </div>
-  </div>
+  <!-- Pet & Bubble -->
+  <div class="pet" id="pet">😜</div>
+  <div class="speech-bubble" id="bubble">Click Buy Now!</div>
 
-  <!-- Product 4 -->
-  <div class="product-card">
-    <img class="product-thumb" src="https://images.unsplash.com/photo-1540202404-8b9bd7a5b2d9?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=9a8b7c6d5e4f3b2a1c0d9e8f7a6b5c4d" alt="Makeup Palette">
-    <div class="product-body">
-      <div class="product-title">Glam Eyes Palette</div>
-      <div class="product-price">₹1499</div>
-      <div class="product-actions">
-        <button class="buy-btn" data-product="Glam Eyes Palette" onclick="goToProduct(this)">Buy Now</button>
-        <button class="wish-btn">Wishlist</button>
-      </div>
-    </div>
-  </div>
-</section>
+  <footer>
+    &copy; 2025 TrendCave. All Rights Reserved.
+  </footer>
 
-<!-- FOOTER -->
-<footer>
-  <div class="links">
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="shop.html">Shop</a>
-  </div>
-  <p style="margin-top:12px;color:var(--muted)">© 2025 TrendCave. All rights reserved.</p>
-</footer>
+  <script>
+    const pet = document.getElementById("pet");
+    const bubble = document.getElementById("bubble");
 
-<!-- PET MASCOT -->
-<div class="pet" id="pet" onclick="petClick()">
-  <div class="bubble" id="petBubble">Buy Now →</div>
-  <div class="mascot">🐾</div>
-</div>
+    // Funny expressions
+    const expressions = ["😜","😂","😎","🤩","😏","🤣"];
+    // Funny bubble messages
+    const messages = [
+      "Click Buy Now!",
+      "Oye! Jaldi Kharid!",
+      "Mat soch itna!",
+      "Limited Stock!",
+      "Bhai, der mat kar!",
+      "Deal miss karega kya?"
+    ];
+    // Funny sound
+    const audio = new Audio("https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg");
 
-<script>
-  // Fade-in on scroll
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = { threshold: 0.15 };
-  const appearOnScroll = new IntersectionObserver(function(entries, obs){
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-        obs.unobserve(entry.target);
-      }
-    })
-  }, appearOptions);
-  faders.forEach(f => {
-    appearOnScroll.observe(f);
-  });
+    function showBubble() {
+      // Random expression
+      pet.textContent = expressions[Math.floor(Math.random() * expressions.length)];
+      // Random message
+      bubble.textContent = messages[Math.floor(Math.random() * messages.length)];
+      
+      const rect = pet.getBoundingClientRect();
+      bubble.style.left = rect.left + 90 + "px";
+      bubble.style.top = rect.top - 10 + "px";
+      bubble.classList.add("show");
 
-  // Pet animation: jump every 15s and point towards nearest Buy Now if visible
-  const pet = document.getElementById('pet');
-  const bubble = document.getElementById('petBubble');
+      // Play funny sound
+      audio.currentTime = 0;
+      audio.play();
 
-  function petJump(){
-    pet.classList.add('jumping');
-    setTimeout(()=>pet.classList.remove('jumping'),900);
-    // highlight nearest visible buy button
-    const buyButtons = Array.from(document.querySelectorAll('.buy-btn'));
-    const inView = buyButtons.filter(b=>{
-      const r = b.getBoundingClientRect();
-      return r.top >= 0 && r.bottom <= (window.innerHeight || document.documentElement.clientHeight);
-    });
-    let target = inView[0] || buyButtons[0];
-    if(target){
-      // temporary glow
-      target.style.boxShadow = "0 10px 30px rgba(255,215,0,0.24)";
-      setTimeout(()=>target.style.boxShadow = "", 1300);
-      // move bubble near pet with product hint
-      const productName = target.dataset.product || "Buy Now";
-      bubble.textContent = "Buy " + productName;
+      setTimeout(() => {
+        bubble.classList.remove("show");
+      }, 2000);
     }
-    // show bubble briefly
-    bubble.style.opacity = 1;
-    bubble.style.transform = "translateY(0) scale(1)";
-    setTimeout(()=>{
-      bubble.style.opacity = 0;
-      bubble.style.transform = "translateY(8px) scale(.95)";
-    },1400);
-  }
 
-  // start jumping loop
-  let petTimer = setInterval(petJump, 15000);
-  // initial small delay
-  setTimeout(petJump, 1200);
-
-  // If user clicks pet -> move to shop
-  function petClick(){ 
-    // small bounce
-    pet.classList.add('jumping');
-    setTimeout(()=>pet.classList.remove('jumping'),600);
-    // go to shop
-    window.location.href = 'shop.html';
-  }
-
-  // When user clicks Buy Now -> go to product page with param
-  function goToProduct(el){
-    const product = encodeURIComponent(el.dataset.product || "product");
-    // navigate to product.html with query param to identify product
-    window.location.href = `product.html?product=${product}`;
-  }
-
-  // pause pet animation when user focuses form or mobile typing (to avoid annoyance)
-  window.addEventListener('focusin', ()=> clearInterval(petTimer));
-  window.addEventListener('focusout', ()=> { clearInterval(petTimer); petTimer = setInterval(petJump,15000) });
-
-  // small accessibility: allow keyboard activation of pet (Enter)
-  pet.addEventListener('keydown', e => { if(e.key === 'Enter') petClick(); });
-</script>
+    // Every 5 seconds show bubble
+    setInterval(showBubble, 5000);
+  </script>
 </body>
 </html>
