@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dimensional Nexus - The Hero's Emporium</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
         /* ------------------------------------------- */
-        /* --- DIMENSIONAL NEXUS CORE STYLES (ANIME VIBE) --- */
+        /* --- DIMENSIONAL NEXUS CORE STYLES --- */
         /* ------------------------------------------- */
         :root {
             --color-primary: #0f0a1c;   /* Deep Midnight Blue */
@@ -18,11 +21,28 @@
 
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif; 
+            font-family: 'Michroma', sans-serif; 
             background-color: var(--color-primary);
             color: var(--color-text);
             text-align: center;
-            height: 300vh;
+            /* 💥 NEW: Website ki height ab bahut badi ho gayi hai! */
+            height: auto; 
+            min-height: 400vh; 
+        }
+
+        /* Reusable Section Styling */
+        section {
+            padding: 100px 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        section h2 {
+            font-size: 56px;
+            margin-bottom: 60px;
+            color: var(--color-accent-neon);
+            font-family: 'Orbitron', sans-serif; 
+            text-shadow: 0 0 5px var(--color-accent-neon);
         }
 
         /* ------------------------------------------- */
@@ -41,7 +61,8 @@
 
         .logo {
             font-size: 36px;
-            font-weight: 800;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif; 
             color: var(--color-accent-neon);
             text-shadow: 0 0 10px var(--color-accent-neon), 0 0 20px var(--color-secondary);
         }
@@ -62,6 +83,7 @@
             transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             border: 1px solid var(--color-accent-pink);
+            font-family: 'Michroma', sans-serif;
         }
 
         .nav-orb:hover {
@@ -81,7 +103,6 @@
             justify-content: center;
             align-items: center;
             
-            /* Anime/Cyberpunk Background */
             background: url('https://images.unsplash.com/photo-1547394765-185632f05d54?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center fixed; 
             background-size: cover;
             position: relative;
@@ -93,6 +114,7 @@
             font-size: 72px;
             margin: 0;
             color: white;
+            font-family: 'Orbitron', sans-serif; 
             text-shadow: 0 0 5px #fff, 0 0 10px var(--color-accent-pink), 0 0 20px var(--color-accent-neon);
             z-index: 10;
         }
@@ -118,6 +140,7 @@
             transition: all 0.3s ease;
             z-index: 10;
             text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .cta-btn:hover {
@@ -128,20 +151,41 @@
         }
 
         /* ------------------------------------------- */
+        /* --- FEATURED CATEGORIES SECTION (NEW) --- */
+        /* ------------------------------------------- */
+        .category-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .category-card {
+            background: var(--color-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            width: 30%;
+            border: 1px solid var(--color-accent-pink);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+            border-color: var(--color-accent-neon);
+        }
+
+        .category-card h3 {
+            color: var(--color-accent-neon);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+        }
+
+        /* ------------------------------------------- */
         /* --- PRODUCT GALLERY --- */
         /* ------------------------------------------- */
         .product-section {
-            padding: 100px 50px;
             background-color: var(--color-primary);
-            position: relative;
-            z-index: 2;
-        }
-
-        .product-section h2 {
-            font-size: 56px;
-            margin-bottom: 60px;
-            color: var(--color-accent-neon);
-            text-shadow: 0 0 5px var(--color-accent-neon);
         }
 
         .product-grid {
@@ -160,216 +204,4 @@
             min-height: 480px;
             transition: all 0.5s;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            
-            animation: float-product 6s ease-in-out infinite;
-        }
-        
-        @keyframes float-product {
-            0%, 100% { transform: translateY(0) rotateX(0deg); }
-            50% { transform: translateY(-15px) rotateX(2deg); }
-        }
-
-        .product-card:hover {
-            border-color: var(--color-accent-pink);
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--color-accent-pink);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 10px var(--color-accent-pink));
-        }
-
-        .product-story {
-            font-style: italic;
-            color: var(--color-accent-neon);
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        
-        /* ------------------------------------------- */
-        /* --- ANIME CHARACTER OVERLAY --- */
-        /* ------------------------------------------- */
-
-        #character-overlay {
-            position: fixed;
-            bottom: -200px; /* Initially hidden below screen */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 250px; /* Character size */
-            height: auto;
-            z-index: 9999;
-            transition: bottom 1s ease-out; /* Slide-in animation */
-            filter: drop-shadow(0 0 20px var(--color-accent-pink));
-        }
-
-        #character-overlay.show {
-            bottom: 0px; /* Slides up to show */
-        }
-
-        #character-overlay img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        #character-bubble {
-          position: absolute;
-          background: var(--color-accent-neon); 
-          color: var(--color-primary);
-          padding: 10px 15px;
-          border-radius: 15px;
-          font-weight: bold;
-          box-shadow: 0 0 20px var(--color-accent-neon);
-          transition: opacity 0.3s ease, transform 0.3s ease;
-          opacity: 0;
-          pointer-events: none;
-          z-index: 99999;
-          white-space: nowrap;
-          bottom: calc(100% + 10px); /* Above the character */
-          left: 50%;
-          transform: translateX(-50%);
-        }
-        #character-bubble.show {
-          opacity: 1;
-          transform: translateX(-50%) translateY(-10px) scale(1);
-        }
-        
-        /* ------------------------------------------- */
-        /* --- FOOTER --- */
-        /* ------------------------------------------- */
-        footer {
-            padding: 30px;
-            background: var(--color-secondary);
-            margin-top: 60px;
-            border-top: 1px solid var(--color-accent-pink);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="logo">DIMENSIONAL NEXUS</div>
-        <nav>
-            <a href="#" class="nav-orb">Hero Gallery</a>
-            <a href="#" class="nav-orb">Manga Scrolls</a>
-            <a href="#" class="nav-orb">Figure Forge</a>
-            <a href="#" class="nav-orb">Summoning Circle (Cart)</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Unleash Your Inner Hero</h1>
-        <p>Your journey begins at the heart of the multiverse.</p>
-        <button class="cta-btn">Begin Summoning</button>
-    </section>
-
-    <section class="product-section">
-        <h2>Legendary Artifacts</h2>
-        
-        <div class="product-grid">
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1517976936306-037346399153" alt="Cosmic Orb">
-                <h3>The Final Sword</h3>
-                <p class="product-story">A weapon forged in the fires of an ancient dimension. +99 ATK.</p>
-                <p>Price: 450 Credits</p>
-                <button class="cta-btn" style="padding: 10px 20px;">Acquire Power</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1542856230-f5651c6c518b" alt="Galaxy Powder">
-                <h3>Chrono Dust</h3>
-                <p class="product-story">Finely ground remnants of time itself. Wear it to glitch reality.</p>
-                <p>Price: 95 Credits</p>
-                <button class="cta-btn" style="padding: 10px 20px;">Acquire Power</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1498146740611-645366436f52" alt="Aether Key">
-                <h3>Pixelated Heart</h3>
-                <p class="product-story">The core of a forgotten hero. Unlocks the hidden ending.</p>
-                <p>Price: 1200 Credits</p>
-                <button class="cta-btn" style="padding: 10px 20px;">Acquire Power</button>
-            </div>
-            
-        </div>
-    </section>
-    
-    <div id="character-overlay">
-        <img id="anime-character-image" src="https://i.ibb.co/L5Qx6z0/anime-hero-1.png" alt="Anime Character">
-        <div id="character-bubble"></div>
-    </div>
-    
-    <footer>
-        &copy; 2025 DIMENSIONAL NEXUS. Your Saga Continues.
-    </footer>
-
-    <script>
-        // *** ANIME CHARACTER IMAGE LINKS ***
-        // Yahan aap apne pasandida characters ki PNG/GIF links daal sakte hain
-        const CHARACTER_IMAGES = [
-            "https://i.ibb.co/L5Qx6z0/anime-hero-1.png", // Example Hero 1
-            "https://i.ibb.co/c1b2pP0/anime-hero-2.png", // Example Hero 2
-            "https://i.ibb.co/9q09k2C/anime-hero-3.png"  // Example Hero 3
-            // Aap aur links add kar sakte hain
-        ];
-
-        // Character messages
-        const CHARACTER_MESSAGES = [
-            "Hey, adventurer! Don't miss out on these epic items!",
-            "Psst! A true hero knows when to power up! Buy now!",
-            "My senses tell me you need these artifacts!",
-            "The fate of your quest depends on this gear!",
-            "Even I need new equipment sometimes. Check these out!",
-            "Only the worthy may acquire these treasures!",
-            "Don't be a side character! Grab your legendary gear!"
-        ];
-
-        const characterOverlay = document.getElementById('character-overlay');
-        const animeCharacterImage = document.getElementById('anime-character-image');
-        const characterBubble = document.getElementById('character-bubble');
-
-        let currentCharacterIndex = 0;
-
-        function showCharacterWithBubble() {
-            // Random character select
-            currentCharacterIndex = Math.floor(Math.random() * CHARACTER_IMAGES.length);
-            animeCharacterImage.src = CHARACTER_IMAGES[currentCharacterIndex];
-            
-            // Random message select
-            characterBubble.textContent = CHARACTER_MESSAGES[Math.floor(Math.random() * CHARACTER_MESSAGES.length)];
-            
-            characterOverlay.classList.add('show'); // Slide up
-            setTimeout(() => {
-                characterBubble.classList.add('show'); // Show bubble after character slides
-            }, 500); // .5s delay
-            
-            // Auto-hide after some time
-            setTimeout(hideCharacter, 6000); // Character and bubble stay for 6 seconds
-        }
-
-        function hideCharacter() {
-            characterBubble.classList.remove('show');
-            setTimeout(() => {
-                characterOverlay.classList.remove('show'); // Slide down
-            }, 300); // Bubble hide transition time
-        }
-
-        // --- Parallax Effect Logic (Retained) ---
-        window.addEventListener('scroll', function() {
-            const scrolled = window.scrollY;
-            document.querySelector('.hero').style.backgroundPosition = 'center ' + (-scrolled * 0.5) + 'px' + ' fixed';
-        });
-
-        // Initial call after page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            setInterval(showCharacterWithBubble, 10000); // Har 10 seconds mein naya character dikhao
-            showCharacterWithBubble(); // Pehla character page load par hi dikhao
-        });
-    </script>
-</body>
-</html>
+            backdrop
