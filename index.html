@@ -1,146 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Puppy Overlay</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrendCave</title>
+  <style>
+    /* ------------------------------------------- */
+    /* --- ORIGINAL TRENDCAVE STYLES --- */
+    /* ------------------------------------------- */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #ffd700;
+      text-align: center;
+    }
 
-    <style>
-        body {
-            /* Agar aapki website ka koi background ho toh theek hai, varna yeh puppy hamesha top par rahega */
-            padding: 0;
-            margin: 0;
-            height: 200vh; /* Sirf testing ke liye taaki scroll kar saken */
-        }
-        
-        #puppy-container {
-            position: fixed; /* Sabse zaroori: Screen par fix rakhega */
-            top: 50px; 
-            left: 50px;
-            z-index: 9999; /* Sabse upar dikhega */
-            cursor: pointer;
-            transition: transform 0.5s ease-in-out;
-            /* Puppy jab ulta ghoomega toh smooth transition ke liye */
-        }
+    header {
+      padding: 20px;
+      background: linear-gradient(90deg, #000, #111);
+      color: #ffd700;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-        #cute-puppy {
-            display: block;
-            width: 100px; /* Aap apne hisaab se size badal sakte hain */
-            height: 100px;
-        }
+    .hero {
+      padding: 60px 20px;
+    }
 
-        #buy-message {
-            position: absolute;
-            bottom: 110%; /* Puppy ke upar position */
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #fff;
-            border: 2px solid #ff69b4;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            width: 150px;
-            text-align: center;
-            
-            /* Default mein message box hidden */
-            opacity: 0; 
-            pointer-events: none; /* Jab hidden ho toh click ko ignore karega */
-            transition: opacity 0.3s ease;
-        }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
 
-        #buy-message p {
-            margin-top: 0;
-            font-size: 14px;
-            color: #333;
-            font-family: sans-serif;
-        }
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
 
-        #buy-message button {
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-    </style>
+    .btn {
+      background: #ffd700;
+      color: #000;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #e6c200;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 10px;
+    }
+
+    .category {
+      background: #111;
+      border: 2px solid #ffd700;
+      border-radius: 12px;
+      margin: 15px;
+      padding: 20px;
+      width: 260px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .category:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px #ffd700;
+    }
+
+    .category h3 {
+      margin-bottom: 12px;
+    }
+
+    /* ------------------------------------------- */
+    /* --- NEW PET OVERLAY STYLES --- */
+    /* ------------------------------------------- */
+    
+    /* Existing .pet class ko hata diya hai, naya container use karenge */
+    
+    #pet-container {
+        position: fixed; 
+        top: 50px; 
+        left: 50px;
+        z-index: 9999; 
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out; /* Left/Top movement ke liye smooth transition */
+    }
+
+    /* Pet Images (GIF/PNG) */
+    #pet-container img {
+        width: 120px; /* Pet ka bada size */
+        height: 120px;
+        border-radius: 50%; /* Agar transparent image nahi hai to accha lagega */
+        display: none; /* By default saari images chhipi rahengi */
+    }
+
+    .active-pet-image {
+        display: block !important; /* Jo active hoga, woh dikhega */
+    }
+
+    /* Speech Bubble (Aapki website ke colors ke hisaab se) */
+    #bubble {
+      position: absolute;
+      background: #ffd700; /* Gold */
+      color: #000;
+      padding: 10px 15px;
+      border-radius: 15px;
+      font-weight: bold;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 99999;
+      white-space: nowrap;
+    }
+    #bubble.show {
+      opacity: 1;
+      transform: translateY(-10px) scale(1);
+    }
+
+
+    footer {
+      padding: 20px;
+      background: #111;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    TrendCave
+  </header>
 
-    <div id="puppy-container">
-        
-        <img id="cute-puppy" src="https://postimg.cc/V5Zn5xtM" alt="Cute Puppy"> 
-        
-        <div id="buy-message">
-            <p>Adopt me! Click 'Buy' now! 🐕</p>
-            <button onclick="alert('Thank you for buying me!');">Buy Now!</button>
-        </div>
+  <section class="hero">
+    <h1>Welcome to TrendCave</h1>
+    <p>Explore Premium Products: Kids Toys, Female Makeup & More</p>
+    <button class="btn">Shop Now</button>
+  </section>
+
+  <section class="categories">
+    <div class="category">
+      <h3>Kids Toys</h3>
+      <p>Fun, safe, and exciting toys for children.</p>
+      <button class="btn">Buy Now</button>
     </div>
+    <div class="category">
+      <h3>Female Makeup</h3>
+      <p>Premium beauty products for every occasion.</p>
+      <button class="btn">Buy Now</button>
+    </div>
+    <div class="category">
+      <h3>Accessories</h3>
+      <p>Stylish items to complete your look.</p>
+      <button class="btn">Buy Now</button>
+    </div>
+  </section>
+
+  <div id="pet-container">
     
-    <h1 style="text-align:center; padding-top:100px;">My Awesome Website</h1>
-    <p style="text-align:center;">Scroll to see the puppy follow you!</p>
-    <script>
-        const puppyContainer = document.getElementById('puppy-container');
-        const buyMessage = document.getElementById('buy-message');
+    <img id="pet-normal" src="https://postimg.cc/V5Zn5xtM" alt="Pet Normal" class="active-pet-image"> 
+    
+    <img id="pet-sad" src="YOUR_SAD_PET_IMAGE_URL" alt="Pet Sad">
 
-        let x = 50; 
-        let y = 50; 
-        let dx = 3; // X-speed
-        let dy = 3; // Y-speed
+    <img id="pet-happy" src="YOUR_HAPPY_PET_IMAGE_URL" alt="Pet Happy">
+    
+  </div>
+  
+  <div id="bubble"></div>
 
-        function movePuppy() {
-            // Screen ki width/height
-            const maxX = window.innerWidth - puppyContainer.offsetWidth;
-            const maxY = window.innerHeight - puppyContainer.offsetHeight;
+  <footer>
+    &copy; 2025 TrendCave. All Rights Reserved.
+  </footer>
 
-            x += dx;
-            y += dy;
+  <script>
+    // *************************************************************
+    // *** APNE PET IMAGE LINKS YAHAN BHI PASTE KAREIN ***
+    // *************************************************************
+    const NORMAL_URL = "YOUR_NORMAL_PET_GIF_URL";
+    const SAD_URL    = "YOUR_SAD_PET_IMAGE_URL";
+    const HAPPY_URL  = "YOUR_HAPPY_PET_IMAGE_URL"; 
+    
+    const petContainer = document.getElementById('pet-container');
+    const petNormal = document.getElementById('pet-normal');
+    const petSad = document.getElementById('pet-sad');
+    const petHappy = document.getElementById('pet-happy');
+    const bubble = document.getElementById('bubble');
 
-            // Jab horizontal edge se takraye
-            if (x > maxX || x < 0) {
-                dx = -dx;
-                // Puppy ko flip karna (jis direction mein jaa raha hai)
-                puppyContainer.style.transform = (dx > 0) ? 'scaleX(1)' : 'scaleX(-1)'; 
-            }
-            // Jab vertical edge se takraye
-            if (y > maxY || y < 0) {
-                dy = -dy;
-            }
+    // Movement variables
+    let x = 30; 
+    let y = 30; 
+    let dx = 2; //
+    let dy = 2; 
 
-            puppyContainer.style.left = x + 'px';
-            puppyContainer.style.top = y + 'px';
+    // Bubble messages (Emojis hata diye gaye hain)
+    const messages = [
+        "Please adopt me!",
+        "My heart is broken, click 'Buy'!",
+        "Don't ignore me! Buy now!",
+        "I need a home! Shop today!",
+        "I'm feeling cold, click 'Buy'!",
+        "Quick! Limited time offer!"
+    ];
 
-            requestAnimationFrame(movePuppy);
+    function setPetEmotion(emotion) {
+        // Sabko chhipa do
+        petNormal.classList.remove('active-pet-image');
+        petSad.classList.remove('active-pet-image');
+        petHappy.classList.remove('active-pet-image');
+
+        // Zaroorat ke hisaab se dikhao aur image source set karo (GIF/Image update)
+        if (emotion === 'sad') {
+            petSad.classList.add('active-pet-image');
+            petSad.src = SAD_URL;
+        } else if (emotion === 'happy') {
+            petHappy.classList.add('active-pet-image');
+            petHappy.src = HAPPY_URL;
+        } else { // 'normal'
+            petNormal.classList.add('active-pet-image');
+            petNormal.src = NORMAL_URL;
+        }
+    }
+
+    function showBubble(isEmotional) {
+        const rect = petContainer.getBoundingClientRect();
+        
+        // Agar emotional message hai, toh uske hisaab se message chuno
+        if (isEmotional) {
+             // Sad/Emotional messages yahan bhi daal sakte hain agar chahein
+             bubble.textContent = messages[Math.floor(Math.random() * messages.length)];
+        } else {
+             bubble.textContent = messages[Math.floor(Math.random() * messages.length)];
+        }
+        
+        // Bubble position pet image ke top-right ke paas set karna
+        bubble.style.left = (rect.left + rect.width + 10) + "px"; 
+        bubble.style.top = (rect.top - 10) + "px"; 
+        
+        bubble.classList.add("show");
+    }
+
+    function hideBubble() {
+        bubble.classList.remove("show");
+    }
+
+    // --- Pet Movement Logic ---
+    function movePet() {
+        const maxX = window.innerWidth - petContainer.offsetWidth;
+        const maxY = window.innerHeight - petContainer.offsetHeight;
+
+        x += dx;
+        y += dy;
+
+        if (x > maxX || x < 0) {
+            dx = -dx;
+            // Pet ko flip karna
+            petContainer.style.transform = (dx > 0) ? 'scaleX(1)' : 'scaleX(-1)'; 
+        }
+        if (y > maxY || y < 0) {
+            dy = -dy;
         }
 
-        // Animation shuru karein
-        requestAnimationFrame(movePuppy);
+        petContainer.style.left = x + 'px';
+        petContainer.style.top = y + 'px';
 
-        // --- "Force Buy" Logic ---
+        requestAnimationFrame(movePet);
+    }
+    
+    // Animation shuru karein
+    setPetEmotion('normal');
+    requestAnimationFrame(movePet);
 
-        // 1. Puppy par click karne par message dikhana
-        puppyContainer.addEventListener('click', () =>{
-            buyMessage.style.opacity = '1';
-            buyMessage.style.pointerEvents = 'auto';
+
+    // --- Emotional & Force Buy Logic ---
+    
+    // 1. Pet par click karne par action
+    petContainer.addEventListener('click', () => {
+        setPetEmotion('happy'); // Clicked = Happy
+        showBubble(false);
+        
+        // 5 seconds baad message hatao aur emotional mode shuru karo
+        setTimeout(() => {
+            hideBubble();
+            setPetEmotion('sad'); // No buy = Sad Pet 
             
+            // Sad mode ke 4 seconds baad wapas normal/moving mode
             setTimeout(() => {
-                buyMessage.style.opacity = '0';
-                buyMessage.style.pointerEvents = 'none';
-            }, 5000); // Message 5 seconds tak dikhega
-        });
+                setPetEmotion('normal'); 
+            }, 4000); 
 
-        // 2. Har 15 seconds mein ek baar message ko flash karna (User ko force karne ke liye)
-        setInterval(() => {
-            buyMessage.style.opacity = '1';
-            buyMessage.style.pointerEvents = 'auto';
+        }, 5000); 
+    });
 
-            setTimeout(() => {
-                buyMessage.style.opacity = '0';
-                buyMessage.style.pointerEvents = 'none';
-            }, 1000); // 1 second ke liye flash hoga
+    // 2. Har 8 seconds mein random flash (Emotional Force)
+    setInterval(() => {
+        setPetEmotion('happy'); // Flash shuru hone se pehle happy
+        showBubble(true);
+
+        // 2 seconds baad flash band
+        setTimeout(() => {
+            hideBubble();
+            setPetEmotion('sad'); // Flash chala gaya = Sad Pet 
             
-        }, 15000); // Har 15 seconds ke interval par
-    </script>
+            // Sad mode ke 4 seconds baad wapas normal/moving mode
+            setTimeout(() => {
+                setPetEmotion('normal'); 
+            }, 4000); 
+
+        }, 2000); // Bubble 2 seconds tak dikhega
+        
+    }, 8000); // Har 8 seconds mein flash
+  </script>
 </body>
 </html>
