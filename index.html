@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexus Arcade - The Portal Shop</title>
+    <title>Dimensional Nexus - The Hero's Emporium</title>
     <style>
         /* ------------------------------------------- */
-        /* --- NEXUS ARCADE CORE STYLES (ANIME VIBE) --- */
+        /* --- DIMENSIONAL NEXUS CORE STYLES (ANIME VIBE) --- */
         /* ------------------------------------------- */
         :root {
-            --color-primary: #0f0a1c;   /* Deep Midnight Blue (Almost Black) */
+            --color-primary: #0f0a1c;   /* Deep Midnight Blue */
             --color-secondary: #3b1f5c; /* Dark Purple */
-            --color-accent-neon: #00ffff; /* Neon Cyan (Main Accent) */
+            --color-accent-neon: #00ffff; /* Neon Cyan */
             --color-accent-pink: #ff1493; /* Neon Pink */
             --color-text: #e0e0e0;
         }
 
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif; /* Clean, modern font */
+            font-family: 'Arial', sans-serif; 
             background-color: var(--color-primary);
             color: var(--color-text);
             text-align: center;
@@ -26,7 +26,7 @@
         }
 
         /* ------------------------------------------- */
-        /* --- HEADER & NAVIGATION (GLOWING ORBS) --- */
+        /* --- HEADER & NAVIGATION --- */
         /* ------------------------------------------- */
         header {
             position: fixed;
@@ -56,7 +56,7 @@
             color: var(--color-text);
             padding: 8px 18px;
             margin: 0 8px;
-            border-radius: 4px; /* Sharper edges */
+            border-radius: 4px; 
             text-decoration: none;
             font-weight: 600;
             transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -81,7 +81,7 @@
             justify-content: center;
             align-items: center;
             
-            /* Background changed to something more Cyberpunk/Anime related for Vibe */
+            /* Anime/Cyberpunk Background */
             background: url('https://images.unsplash.com/photo-1547394765-185632f05d54?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center fixed; 
             background-size: cover;
             position: relative;
@@ -93,7 +93,6 @@
             font-size: 72px;
             margin: 0;
             color: white;
-            /* Sharp Neon text shadow */
             text-shadow: 0 0 5px #fff, 0 0 10px var(--color-accent-pink), 0 0 20px var(--color-accent-neon);
             z-index: 10;
         }
@@ -152,9 +151,9 @@
         }
 
         .product-card {
-            background: rgba(59, 31, 92, 0.4); /* Darker Purple Transparent */
+            background: rgba(59, 31, 92, 0.4); 
             border: 2px solid var(--color-accent-neon);
-            border-radius: 8px; /* Sharper */
+            border-radius: 8px; 
             margin: 20px;
             padding: 20px;
             width: 300px;
@@ -163,7 +162,6 @@
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
             backdrop-filter: blur(5px);
             
-            /* Floating Animation is retained */
             animation: float-product 6s ease-in-out infinite;
         }
         
@@ -194,33 +192,32 @@
         }
         
         /* ------------------------------------------- */
-        /* --- PET: THE ARCADE GUARDIAN OVERLAY --- */
+        /* --- ANIME CHARACTER OVERLAY --- */
         /* ------------------------------------------- */
 
-        #pet-container {
-            position: fixed; 
-            top: 50px; 
-            left: 50px;
-            z-index: 9999; 
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out, left 0.01s linear, top 0.01s linear; 
+        #character-overlay {
+            position: fixed;
+            bottom: -200px; /* Initially hidden below screen */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px; /* Character size */
+            height: auto;
+            z-index: 9999;
+            transition: bottom 1s ease-out; /* Slide-in animation */
+            filter: drop-shadow(0 0 20px var(--color-accent-pink));
         }
 
-        #pet-container img {
-            width: 120px; 
-            height: 120px;
-            border-radius: 50%; 
-            border: 3px solid var(--color-accent-neon);
-            box-shadow: 0 0 15px var(--color-accent-neon);
-            display: none; 
+        #character-overlay.show {
+            bottom: 0px; /* Slides up to show */
         }
 
-        .active-pet-image {
-            display: block !important; 
+        #character-overlay img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        /* Bubble Style - Neon */
-        #bubble {
+        #character-bubble {
           position: absolute;
           background: var(--color-accent-neon); 
           color: var(--color-primary);
@@ -233,10 +230,13 @@
           pointer-events: none;
           z-index: 99999;
           white-space: nowrap;
+          bottom: calc(100% + 10px); /* Above the character */
+          left: 50%;
+          transform: translateX(-50%);
         }
-        #bubble.show {
+        #character-bubble.show {
           opacity: 1;
-          transform: translateY(-10px) scale(1);
+          transform: translateX(-50%) translateY(-10px) scale(1);
         }
         
         /* ------------------------------------------- */
@@ -252,19 +252,19 @@
 </head>
 <body>
     <header>
-        <div class="logo">NEXUS ARCADE</div>
+        <div class="logo">DIMENSIONAL NEXUS</div>
         <nav>
-            <a href="#" class="nav-orb">Item Gallery</a>
-            <a href="#" class="nav-orb">Manga Pages</a>
-            <a href="#" class="nav-orb">Figure Custom</a>
-            <a href="#" class="nav-orb">Inventory (Cart)</a>
+            <a href="#" class="nav-orb">Hero Gallery</a>
+            <a href="#" class="nav-orb">Manga Scrolls</a>
+            <a href="#" class="nav-orb">Figure Forge</a>
+            <a href="#" class="nav-orb">Summoning Circle (Cart)</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Welcome To The NEXUS</h1>
-        <p>A place where worlds collide and legends begin.</p>
-        <button class="cta-btn">Start Game (Shop Now)</button>
+        <h1>Unleash Your Inner Hero</h1>
+        <p>Your journey begins at the heart of the multiverse.</p>
+        <button class="cta-btn">Begin Summoning</button>
     </section>
 
     <section class="product-section">
@@ -299,140 +299,77 @@
         </div>
     </section>
     
-    <div id="pet-container">
-        
-        <img id="pet-normal" src="https://i.ibb.co/6P2T3zL/cosmic-normal-pet.png" alt="Pet Normal" class="active-pet-image"> 
-        <img id="pet-sad" src="https://i.ibb.co/b3wz97y/cosmic-sad-pet.png" alt="Pet Sad">
-        <img id="pet-happy" src="https://i.ibb.co/TqY905G/cosmic-happy-pet.png" alt="Pet Happy">
+    <div id="character-overlay">
+        <img id="anime-character-image" src="https://i.ibb.co/L5Qx6z0/anime-hero-1.png" alt="Anime Character">
+        <div id="character-bubble"></div>
     </div>
     
-    <div id="bubble"></div>
-
     <footer>
-        &copy; 2025 NEXUS ARCADE. Game Over.
+        &copy; 2025 DIMENSIONAL NEXUS. Your Saga Continues.
     </footer>
 
     <script>
-        // *** PET LINKS ***
-        const NORMAL_URL = "https://i.ibb.co/6P2T3zL/cosmic-normal-pet.png";
-        const SAD_URL    = "https://i.ibb.co/b3wz97y/cosmic-sad-pet.png";
-        const HAPPY_URL  = "https://i.ibb.co/TqY905G/cosmic-happy-pet.png"; 
-        
-        const petContainer = document.getElementById('pet-container');
-        const petNormal = document.getElementById('pet-normal');
-        const petSad = document.getElementById('pet-sad');
-        const petHappy = document.getElementById('pet-happy');
-        const bubble = document.getElementById('bubble');
-
-        let x = 50; 
-        let y = 50; 
-        let dx = 4; // Speed
-        let dy = 4; 
-
-        // Pet messages changed to fit the Arcade/Game theme
-        const messages = [
-            "Mission Failed if you don't 'Acquire'! 🕹️",
-            "Game Over? No! Click Acquire!",
-            "New Quest: Acquire Legendary Item!",
-            "I need more lives! Click 'Acquire Power'!",
-            "Final Boss is waiting! Get your gear now!",
-            "Level Up your Inventory!"
+        // *** ANIME CHARACTER IMAGE LINKS ***
+        // Yahan aap apne pasandida characters ki PNG/GIF links daal sakte hain
+        const CHARACTER_IMAGES = [
+            "https://i.ibb.co/L5Qx6z0/anime-hero-1.png", // Example Hero 1
+            "https://i.ibb.co/c1b2pP0/anime-hero-2.png", // Example Hero 2
+            "https://i.ibb.co/9q09k2C/anime-hero-3.png"  // Example Hero 3
+            // Aap aur links add kar sakte hain
         ];
 
-        function setPetEmotion(emotion) {
-            petNormal.classList.remove('active-pet-image');
-            petSad.classList.remove('active-pet-image');
-            petHappy.classList.remove('active-pet-image');
+        // Character messages
+        const CHARACTER_MESSAGES = [
+            "Hey, adventurer! Don't miss out on these epic items!",
+            "Psst! A true hero knows when to power up! Buy now!",
+            "My senses tell me you need these artifacts!",
+            "The fate of your quest depends on this gear!",
+            "Even I need new equipment sometimes. Check these out!",
+            "Only the worthy may acquire these treasures!",
+            "Don't be a side character! Grab your legendary gear!"
+        ];
 
-            if (emotion === 'sad') {
-                petSad.classList.add('active-pet-image');
-                petSad.src = SAD_URL;
-            } else if (emotion === 'happy') {
-                petHappy.classList.add('active-pet-image');
-                petHappy.src = HAPPY_URL;
-            } else { 
-                petNormal.classList.add('active-pet-image');
-                petNormal.src = NORMAL_URL;
-            }
-        }
+        const characterOverlay = document.getElementById('character-overlay');
+        const animeCharacterImage = document.getElementById('anime-character-image');
+        const characterBubble = document.getElementById('character-bubble');
 
-        function showBubble() {
-            setPetEmotion('happy'); 
-            const rect = petContainer.getBoundingClientRect();
+        let currentCharacterIndex = 0;
+
+        function showCharacterWithBubble() {
+            // Random character select
+            currentCharacterIndex = Math.floor(Math.random() * CHARACTER_IMAGES.length);
+            animeCharacterImage.src = CHARACTER_IMAGES[currentCharacterIndex];
             
-            bubble.textContent = messages[Math.floor(Math.random() * messages.length)];
+            // Random message select
+            characterBubble.textContent = CHARACTER_MESSAGES[Math.floor(Math.random() * CHARACTER_MESSAGES.length)];
             
-            // Positioning the bubble
-            bubble.style.left = (rect.left + rect.width + 10) + "px"; 
-            bubble.style.top = (rect.top - 10) + "px"; 
+            characterOverlay.classList.add('show'); // Slide up
+            setTimeout(() => {
+                characterBubble.classList.add('show'); // Show bubble after character slides
+            }, 500); // .5s delay
             
-            bubble.classList.add("show");
+            // Auto-hide after some time
+            setTimeout(hideCharacter, 6000); // Character and bubble stay for 6 seconds
         }
 
-        function hideBubbleAndGetSad() {
-             bubble.classList.remove("show");
-             setPetEmotion('sad'); 
-             
-             setTimeout(() => {
-                 setPetEmotion('normal'); 
-             }, 4000); 
+        function hideCharacter() {
+            characterBubble.classList.remove('show');
+            setTimeout(() => {
+                characterOverlay.classList.remove('show'); // Slide down
+            }, 300); // Bubble hide transition time
         }
 
-        // --- Pet Movement Logic ---
-        function movePet() {
-            const maxX = window.innerWidth - petContainer.offsetWidth;
-            const maxY = window.innerHeight - petContainer.offsetHeight;
-
-            x += dx;
-            y += dy;
-
-            if (x > maxX || x < 0) {
-                dx = -dx;
-                petContainer.style.transform = (dx > 0) ? 'scaleX(1)' : 'scaleX(-1)'; 
-            }
-            if (y > maxY || y < 0) {
-                dy = -dy;
-            }
-
-            petContainer.style.left = x + 'px';
-            petContainer.style.top = y + 'px';
-
-            requestAnimationFrame(movePet);
-        }
-        
-        // --- Parallax Effect Logic ---
+        // --- Parallax Effect Logic (Retained) ---
         window.addEventListener('scroll', function() {
             const scrolled = window.scrollY;
             document.querySelector('.hero').style.backgroundPosition = 'center ' + (-scrolled * 0.5) + 'px' + ' fixed';
         });
 
-        
-        // Animation shuru karein
-        setPetEmotion('normal');
-        requestAnimationFrame(movePet);
-
-
-        // --- Emotional & Force Buy Logic ---
-        
-        // 1. Pet par click karne par action
-        petContainer.addEventListener('click', () => {
-            showBubble();
-            // 5 seconds baad message hatao aur emotional mode shuru karo
-            setTimeout(() => {
-                hideBubbleAndGetSad();
-            }, 5000); 
+        // Initial call after page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setInterval(showCharacterWithBubble, 10000); // Har 10 seconds mein naya character dikhao
+            showCharacterWithBubble(); // Pehla character page load par hi dikhao
         });
-
-        // 2. Har 8 seconds mein random flash (Emotional Force)
-        setInterval(() => {
-            showBubble();
-
-            // 2 seconds baad flash band
-            setTimeout(() => {
-                hideBubbleAndGetSad();
-            }, 2000); 
-            
-        }, 8000); 
     </script>
 </body>
 </html>
