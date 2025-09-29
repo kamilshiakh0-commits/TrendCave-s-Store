@@ -116,14 +116,12 @@
     background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px 16px; border-radius:10px;
   }
 
-  /* --- Hero Panel with GOJOmanga.jpg (FINAL FIX - SIMPLE PATH) --- */
+  /* --- Hero Panel Styling (Background removed from here) --- */
   .manga-panel{
     width:520px; max-width:100%; height:360px; border-radius:12px;
+    /* CSS background property HATA diya gaya hai. Ab <img> tag use hoga. */
     background:
-      /* FIX: Using simple relative path (most reliable for local file viewing) */
-      url("GOJOmanga.jpg") center/contain no-repeat, 
       #f2f2f2, /* Light background for visibility */
-      /* Baaki ke gradients aur overlays */
       linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)),
       repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 6px),
       radial-gradient(circle at 10% 15%, rgba(47,197,255,0.06), transparent 8%),
@@ -145,12 +143,15 @@
   .panel-frame{
     width:86%; height:84%; border:3px solid rgba(255,255,255,0.03); border-radius:8px; display:flex; flex-direction:column;
     padding:18px; gap:12px; align-items:flex-start; justify-content:center;
-    background: rgba(0,0,0,0.4); 
+    /* Background and z-index added here to ensure text is above the <img> */
+    background: rgba(0,0,0,0.6); 
+    z-index: 2; 
+    position: relative;
   }
   .panel-title{ font-family:"Akira Expanded","Ghastly Panic","Rubik",sans-serif; color:var(--accent-2); font-size:20px; letter-spacing:0.6px; }
   .panel-sub{ color:var(--muted); font-size:13px; max-width:420px; }
 
-  /* --- Products grid (Images added as thumbnails) --- */
+  /* --- Products grid --- */
   .section-title{ max-width:var(--max); margin:8px auto; padding:0 18px; color:var(--gold); font-weight:700; font-size:18px; }
   .grid{ max-width:var(--max); margin:10px auto 56px; padding:0 18px; display:grid; gap:18px;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
@@ -162,27 +163,17 @@
   }
   .card:hover{ transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
   .thumb{
-    width:100%; height:160px; display:block; border-radius:8px; background: linear-gradient(135deg,#111 0%, #141414 100%);
+    width:100%; height:160px; display:block; border-radius:8px; 
+    background: linear-gradient(135deg,#111 0%, #141414 100%); /* Default dark background */
     position:relative; overflow:hidden; border:1px solid rgba(255,255,255,0.02);
   }
   
-  /* Remove the old CSS silhouette and assign uploaded images */
+  /* Remove the old CSS silhouette */
   .thumb .silhouette { display: none; }
 
-  /* Thumbnail 1: Sukuna.jpg (FINAL FIX - SIMPLE PATH) */
-  .grid article:nth-child(1) .thumb {
-      background: 
-        /* FIX: Using simple relative path (no leading slash) */
-        url("Sukuna.jpg") center/contain no-repeat,
-        #f2f2f2; /* Light background for visibility */
-  }
-  /* Thumbnail 2: yuji.jpg (FINAL FIX - SIMPLE PATH) */
-  .grid article:nth-child(2) .thumb {
-      background: 
-        /* FIX: Using simple relative path (no leading slash) */
-        url("yuji.jpg") center/contain no-repeat,
-        #f2f2f2; /* Light background for visibility */
-  }
+  /* Thumbnails 1 & 2 ke CSS background rules HATA diye gaye hain. */
+  /* Ab woh sirf .thumb ke default dark background par <img> dikhayenge. */
+
 
   /* card 3 and 4 revert to the original silhouette placeholder design */
   .grid article:nth-child(3) .thumb .silhouette,
@@ -247,8 +238,10 @@
     </div>
 
     <div class="hero-right">
-      <div class="manga-panel" role="img" aria-label="Aesthetic design panel">
-        <div class="panel-frame">
+      <div class="manga-panel" role="img" aria-label="Aesthetic design panel" style="position: relative;">
+        <img src="GOJOmanga.jpg" alt="Gojo Manga Panel" style="width: 100%; height: 100%; object-fit: contain; background: #f2f2f2; position: absolute; top: 0; left: 0; z-index: 1;" />
+        
+        <div class="panel-frame" style="z-index: 2; position: relative; background: rgba(0,0,0,0.6);"> 
           <div class="panel-title">New Drop: Phantom Edge Pack</div>
           <div class="panel-sub">A minimal poster set inspired by custom silhouettes — pre-order now.</div>
         </div>
@@ -259,9 +252,10 @@
 
 <h3 class="section-title" id="best">Best Sellers</h3>
 <section class="grid" id="shop" aria-label="Products">
+  
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true">
-      <span class="silhouette"></span>
+      <img src="Sukuna.jpg" alt="Sukuna" style="width: 100%; height: 100%; object-fit: contain; background: #f2f2f2; border-radius: 8px;" />
     </div>
     <h3>Phantom Hoodie</h3>
     <div class="meta">Premium cotton • Limited drop</div>
@@ -269,7 +263,9 @@
   </article>
 
   <article class="card" role="article">
-    <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
+    <div class="thumb" aria-hidden="true">
+        <img src="yuji.jpg" alt="Yuji" style="width: 100%; height: 100%; object-fit: contain; background: #f2f2f2; border-radius: 8px;" />
+    </div>
     <h3>Design Poster Set</h3>
     <div class="meta">3 prints • A2 size</div>
     <button class="buy" onclick="goToProduct('Shonen Poster Set')">Buy</button>
