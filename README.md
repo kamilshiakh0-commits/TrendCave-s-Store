@@ -1,1 +1,1 @@
-# TrendCave-s-Store
+# Arcade Store
