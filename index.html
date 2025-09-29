@@ -1,4 +1,4 @@
-
+<!-- Save this file as arcade_store_index.html and open in a browser -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +6,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Arcade Store — Manga Aesthetic</title>
 
+<!-- ====== FONT SETUP ======
+You requested these font names: GHASTLY PANIC / AKIRA EXPANDED / STEPHEN TYPE / BASSY
+I can't host proprietary font files here — replace the src urls below with your hosted font files (.woff2/.woff).
+Example:
+  @font-face { font-family: "GHASTLY PANIC"; src: url("/fonts/GhastlyPanic.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+
+If you don't have those files, the site will fall back to the provided similar web fonts.
+-->
 <style>
   @font-face {
     font-family: "Ghastly Panic";
@@ -117,12 +125,10 @@
     background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px 16px; border-radius:10px;
   }
 
-  /* --- Hero Manga panel (GOJO IMAGE ADDED HERE) --- */
+  /* --- Manga panel / placeholder art (NO real character images) --- */
   .manga-panel{
     width:520px; max-width:100%; height:360px; border-radius:12px;
     background:
-      /* The uploaded GOJOmanga.jpg is set as a background image */
-      url('GOJOmanga.jpg') center/contain no-repeat,
       linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)),
       repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 6px),
       radial-gradient(circle at 10% 15%, rgba(47,197,255,0.06), transparent 8%),
@@ -135,7 +141,6 @@
   .manga-panel::after{
     content:"";
     position:absolute; inset:0; pointer-events:none;
-    /* This makes the text overlay the image and adds a slight manga texture */
     background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.02), transparent 5%),
                 radial-gradient(circle at 70% 60%, rgba(255,255,255,0.015), transparent 6%);
     mix-blend-mode: overlay;
@@ -145,13 +150,12 @@
   .panel-frame{
     width:86%; height:84%; border:3px solid rgba(255,255,255,0.03); border-radius:8px; display:flex; flex-direction:column;
     padding:18px; gap:12px; align-items:flex-start; justify-content:center;
-    /* Adding a slight background to make text readable over the image */
-    background: rgba(0,0,0,0.4); 
+    background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.02));
   }
   .panel-title{ font-family:"Akira Expanded","Ghastly Panic","Rubik",sans-serif; color:var(--accent-2); font-size:20px; letter-spacing:0.6px; }
   .panel-sub{ color:var(--muted); font-size:13px; max-width:420px; }
 
-  /* --- Products grid (Sukuna and Yuji images added as thumbnails) --- */
+  /* --- Products grid (no real photos; manga frame style thumbnails) --- */
   .section-title{ max-width:var(--max); margin:8px auto; padding:0 18px; color:var(--gold); font-weight:700; font-size:18px; }
   .grid{ max-width:var(--max); margin:10px auto 56px; padding:0 18px; display:grid; gap:18px;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
@@ -166,19 +170,13 @@
     width:100%; height:160px; display:block; border-radius:8px; background: linear-gradient(135deg,#111 0%, #141414 100%);
     position:relative; overflow:hidden; border:1px solid rgba(255,255,255,0.02);
   }
-  
-  /* Remove the old CSS silhouette and use the uploaded images */
-  .thumb .silhouette { display: none; }
-
-  /* Sukuna and Yuji images assigned to the first two cards for a visual aesthetic */
-  .grid article:nth-child(1) .thumb {
-      background: url('Sukuna.jpg') center/contain no-repeat;
+  /* make a manga-style silhouette using CSS shapes (no real characters) */
+  .thumb .silhouette{
+    width:100%; height:100%; display:block; background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.02), transparent 6%),
+      linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+    clip-path: polygon(10% 90%, 30% 20%, 50% 40%, 70% 15%, 90% 78%, 60% 92%, 40% 86%);
   }
-  .grid article:nth-child(2) .thumb {
-      background: url('yuji.jpg') center/contain no-repeat;
-  }
-
-  /* card styling remains the same for the rest */
   .card h3{ color:var(--gold); margin:10px 0 6px; font-size:16px; font-family:"Bassy","Poppins"; }
   .meta{ color:var(--muted); font-size:13px; margin-bottom:10px; }
   .card .buy{ background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:#fff; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:800; }
@@ -223,6 +221,7 @@
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero" role="region" aria-label="hero">
   <div class="hero-inner">
     <div class="hero-left">
@@ -235,7 +234,7 @@
     </div>
 
     <div class="hero-right">
-      <div class="manga-panel" role="img" aria-label="manga-styled panel with character art">
+      <div class="manga-panel" role="img" aria-label="manga-styled panel">
         <div class="panel-frame">
           <div class="panel-title">New Drop: Phantom Edge Pack</div>
           <div class="panel-sub">A minimal poster set inspired by modern shonen silhouettes — pre-order now.</div>
@@ -245,24 +244,28 @@
   </div>
 </section>
 
+<!-- Featured / Grid -->
 <h3 class="section-title" id="best">Best Sellers</h3>
 <section class="grid" id="shop" aria-label="Products">
+  <!-- card 1 -->
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true">
-      </div>
+      <span class="silhouette"></span>
+    </div>
     <h3>Phantom Hoodie</h3>
     <div class="meta">Premium cotton • Limited drop</div>
     <button class="buy" onclick="goToProduct('Phantom Hoodie')">Buy</button>
   </article>
 
+  <!-- card 2 -->
   <article class="card" role="article">
-    <div class="thumb" aria-hidden="true">
-      </div>
+    <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
     <h3>Shonen Poster Set</h3>
     <div class="meta">3 prints • A2 size</div>
     <button class="buy" onclick="goToProduct('Shonen Poster Set')">Buy</button>
   </article>
 
+  <!-- card 3 -->
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
     <h3>Manga Panel Phone Case</h3>
@@ -270,6 +273,7 @@
     <button class="buy" onclick="goToProduct('Phone Case')">Buy</button>
   </article>
 
+  <!-- card 4 -->
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
     <h3>Collector Pin Set</h3>
@@ -278,11 +282,13 @@
   </article>
 </section>
 
+<!-- About -->
 <section id="about" style="max-width:var(--max); margin:28px auto; padding:0 18px; color:var(--muted);">
   <h3 style="color:var(--gold); margin-bottom:8px">About Arcade Store</h3>
   <p style="line-height:1.6">Arcade Store is a curated marketplace focusing on tasteful anime-inspired merch — we use manga-style panels, silhouettes and design cues rather than full character art so the site feels elegant and approachable for everyone.</p>
 </section>
 
+<!-- Contact -->
 <section id="contact" style="max-width:var(--max); margin:18px auto 80px; padding:0 18px; color:var(--muted);">
   <h3 style="color:var(--gold); margin-bottom:8px">Contact</h3>
   <p>hello@arcadestore.example • +91 98765 43210</p>
@@ -301,12 +307,20 @@
   </div>
 </footer>
 
+<!-- audio UI: visible small control (autoplay may be blocked by some browsers) -->
 <div id="audio-control" aria-hidden="false" title="Background audio controls">
   <button id="audio-toggle">Play BGM</button>
   <button id="audio-mute">Mute</button>
 </div>
 
-<audio id="bg-a" loop preload="auto" src=""></audio> <audio id="bg-b" loop preload="auto" src=""></audio> <script>
+<!-- ====== BACKGROUND AUDIO (Japanese dialogue snippets) ======
+You must replace the placeholder src URLs below with direct links to the audio clips you want to use.
+IMPORTANT: Many browsers block autoplay with sound — this script attempts to start low-volume playback and also provides manual controls.
+-->
+<audio id="bg-a" loop preload="auto" src=""></audio> <!-- replace src with first dialogue URL -->
+<audio id="bg-b" loop preload="auto" src=""></audio> <!-- replace src with second dialogue URL -->
+
+<script>
   // ---------- SITE NAME (you asked Arcade Store) ----------
   const SITE_NAME = "Arcade Store"; // already used in header
   document.getElementById('brandTitle').textContent = SITE_NAME;
