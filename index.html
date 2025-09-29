@@ -1,236 +1,400 @@
-<!DOCTYPE html>
+<!-- Save this file as arcade_store_index.html and open in a browser -->
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dimensional Nexus - The Hero's Emporium</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ------------------------------------------- */
-        /* --- DIMENSIONAL NEXUS CORE STYLES --- */
-        /* ------------------------------------------- */
-        :root {
-            --color-primary: #0f0a1c;   /* Deep Midnight Blue */
-            --color-secondary: #3b1f5c; /* Dark Purple */
-            --color-accent-neon: #00ffff; /* Neon Cyan */
-            --color-accent-pink: #ff1493; /* Neon Pink */
-            --color-text: #e0e0e0;
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Arcade Store — Manga Aesthetic</title>
 
-        body {
-            margin: 0;
-            font-family: 'Michroma', sans-serif; 
-            background-color: var(--color-primary);
-            color: var(--color-text);
-            text-align: center;
-            /* 💥 NEW: Website ki height ab bahut badi ho gayi hai! */
-            height: auto; 
-            min-height: 400vh; 
-        }
+<!-- ====== FONT SETUP ======
+You requested these font names: GHASTLY PANIC / AKIRA EXPANDED / STEPHEN TYPE / BASSY
+I can't host proprietary font files here — replace the src urls below with your hosted font files (.woff2/.woff).
+Example:
+  @font-face { font-family: "GHASTLY PANIC"; src: url("/fonts/GhastlyPanic.woff2") format("woff2"); font-weight: 700; font-style: normal; }
 
-        /* Reusable Section Styling */
-        section {
-            padding: 100px 50px;
-            position: relative;
-            z-index: 2;
-        }
+If you don't have those files, the site will fall back to the provided similar web fonts.
+-->
+<style>
+  @font-face {
+    font-family: "Ghastly Panic";
+    src: url("fonts/GhastlyPanic.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Akira Expanded";
+    src: url("fonts/AkiraExpanded.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Stephen Type";
+    src: url("fonts/StephenType.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Bassy";
+    src: url("fonts/Bassy.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
 
-        section h2 {
-            font-size: 56px;
-            margin-bottom: 60px;
-            color: var(--color-accent-neon);
-            font-family: 'Orbitron', sans-serif; 
-            text-shadow: 0 0 5px var(--color-accent-neon);
-        }
+  /* Fallback fonts if custom ones are not available */
+  :root{
+    --bg-1: #060608;
+    --panel: #0f0f11;
+    --accent-1: #ef3f3f;   /* Demon-slayer red vibe */
+    --accent-2: #2fc5ff;   /* blue glow (Jujutsu vibe) */
+    --gold: #ffd166;
+    --muted: #9da3a8;
+    --max: 1200px;
+  }
 
-        /* ------------------------------------------- */
-        /* --- HEADER & NAVIGATION --- */
-        /* ------------------------------------------- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 10, 28, 0.95);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 2px solid var(--color-accent-neon);
-        }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Stephen Type", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(47,197,255,0.03), transparent 6%),
+                radial-gradient(900px 500px at 95% 90%, rgba(239,63,63,0.03), transparent 6%),
+                var(--bg-1);
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
 
-        .logo {
-            font-size: 36px;
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif; 
-            color: var(--color-accent-neon);
-            text-shadow: 0 0 10px var(--color-accent-neon), 0 0 20px var(--color-secondary);
-        }
+  /* --- Top navigation --- */
+  header.site-header{
+    position:sticky; top:0; z-index:60;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.22));
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .header-inner{
+    max-width:var(--max); margin:0 auto; padding:14px 18px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .brand {
+    display:flex; align-items:center; gap:12px;
+  }
+  .brand .mark{
+    width:52px; height:52px; border-radius:10px;
+    background: linear-gradient(135deg, var(--gold), #ffb86b);
+    display:flex; align-items:center; justify-content:center; color:#000; font-weight:900;
+    font-family:"Akira Expanded", "Bassy", sans-serif; font-size:18px;
+    box-shadow:0 8px 40px rgba(255,193,70,0.06);
+  }
+  .brand .title {
+    font-family: "Ghastly Panic", "Akira Expanded", "Bassy", "Poppins", sans-serif;
+    font-weight:800; color:var(--gold); letter-spacing:0.6px; font-size:18px;
+  }
+  nav.header-nav a{
+    color:#e6e6e6; text-decoration:none; margin-left:18px; font-weight:600; font-size:14px;
+  }
+  nav.header-nav a:hover{ color:var(--accent-1) }
 
-        nav {
-            margin-top: 10px;
-        }
+  /* --- Hero / Manga-style --- */
+  .hero{
+    padding:64px 18px; display:flex; align-items:center; justify-content:center; gap:28px;
+  }
+  .hero-inner{ max-width:var(--max); width:100%; display:flex; gap:36px; align-items:center; }
+  .hero-left{ flex:1; min-width:300px; }
+  .hero-right{ flex:1; min-width:320px; display:flex; align-items:center; justify-content:center; }
 
-        .nav-orb {
-            display: inline-block;
-            background: var(--color-secondary);
-            color: var(--color-text);
-            padding: 8px 18px;
-            margin: 0 8px;
-            border-radius: 4px; 
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            border: 1px solid var(--color-accent-pink);
-            font-family: 'Michroma', sans-serif;
-        }
+  .hero h1{
+    margin:0; font-size:44px; line-height:1.02;
+    font-family:"Akira Expanded", "Ghastly Panic", "Bassy", sans-serif;
+    color:var(--gold); text-shadow:0 12px 30px rgba(255,209,102,0.04);
+  }
+  .hero p{ margin:12px 0 18px; color:var(--muted); font-size:16px; max-width:560px; }
 
-        .nav-orb:hover {
-            background: var(--color-accent-neon);
-            color: var(--color-primary);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--color-accent-neon);
-        }
+  .cta-row{ display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; }
+  .btn-primary{
+    background: linear-gradient(90deg, var(--accent-1), #ff7a7a);
+    color:#fff; padding:12px 18px; border-radius:10px; border:none; font-weight:800;
+    cursor:pointer; box-shadow:0 12px 30px rgba(239,63,63,0.12);
+    font-family:"Bassy","Poppins",sans-serif;
+  }
+  .btn-ghost{
+    background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px 16px; border-radius:10px;
+  }
 
-        /* ------------------------------------------- */
-        /* --- HERO & PARALLAX EFFECT --- */
-        /* ------------------------------------------- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            background: url('https://images.unsplash.com/photo-1547394765-185632f05d54?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center fixed; 
-            background-size: cover;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
+  /* --- Manga panel / placeholder art (NO real character images) --- */
+  .manga-panel{
+    width:520px; max-width:100%; height:360px; border-radius:12px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 6px),
+      radial-gradient(circle at 10% 15%, rgba(47,197,255,0.06), transparent 8%),
+      linear-gradient(90deg, rgba(239,63,63,0.02), transparent 50%);
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  /* halftone dot overlay using svg filter (manga-like) */
+  .manga-panel::after{
+    content:"";
+    position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.02), transparent 5%),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.015), transparent 6%);
+    mix-blend-mode: overlay;
+  }
 
-        .hero h1 {
-            font-size: 72px;
-            margin: 0;
-            color: white;
-            font-family: 'Orbitron', sans-serif; 
-            text-shadow: 0 0 5px #fff, 0 0 10px var(--color-accent-pink), 0 0 20px var(--color-accent-neon);
-            z-index: 10;
-        }
+  /* stylized manga panel lines */
+  .panel-frame{
+    width:86%; height:84%; border:3px solid rgba(255,255,255,0.03); border-radius:8px; display:flex; flex-direction:column;
+    padding:18px; gap:12px; align-items:flex-start; justify-content:center;
+    background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.02));
+  }
+  .panel-title{ font-family:"Akira Expanded","Ghastly Panic","Rubik",sans-serif; color:var(--accent-2); font-size:20px; letter-spacing:0.6px; }
+  .panel-sub{ color:var(--muted); font-size:13px; max-width:420px; }
 
-        .hero p {
-            font-size: 26px;
-            margin-bottom: 40px;
-            z-index: 10;
-            color: var(--color-accent-neon);
-            text-shadow: 0 0 5px var(--color-primary);
-        }
+  /* --- Products grid (no real photos; manga frame style thumbnails) --- */
+  .section-title{ max-width:var(--max); margin:8px auto; padding:0 18px; color:var(--gold); font-weight:700; font-size:18px; }
+  .grid{ max-width:var(--max); margin:10px auto 56px; padding:0 18px; display:grid; gap:18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
 
-        .cta-btn {
-            background: var(--color-accent-pink);
-            color: white;
-            padding: 16px 45px;
-            border: none;
-            border-radius: 5px;
-            font-size: 22px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 20px var(--color-accent-pink);
-            transition: all 0.3s ease;
-            z-index: 10;
-            text-transform: uppercase;
-            font-family: 'Orbitron', sans-serif;
-        }
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border:1px solid rgba(255,255,255,0.03);
+    padding:14px; border-radius:12px; overflow:hidden; transition: transform .28s ease, box-shadow .28s ease;
+  }
+  .card:hover{ transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .thumb{
+    width:100%; height:160px; display:block; border-radius:8px; background: linear-gradient(135deg,#111 0%, #141414 100%);
+    position:relative; overflow:hidden; border:1px solid rgba(255,255,255,0.02);
+  }
+  /* make a manga-style silhouette using CSS shapes (no real characters) */
+  .thumb .silhouette{
+    width:100%; height:100%; display:block; background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.02), transparent 6%),
+      linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+    clip-path: polygon(10% 90%, 30% 20%, 50% 40%, 70% 15%, 90% 78%, 60% 92%, 40% 86%);
+  }
+  .card h3{ color:var(--gold); margin:10px 0 6px; font-size:16px; font-family:"Bassy","Poppins"; }
+  .meta{ color:var(--muted); font-size:13px; margin-bottom:10px; }
+  .card .buy{ background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:#fff; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:800; }
 
-        .cta-btn:hover {
-            background: var(--color-accent-neon);
-            transform: scale(1.08) translateY(-3px);
-            box-shadow: 0 0 30px var(--color-accent-neon);
-            color: var(--color-primary);
-        }
+  /* footer */
+  footer{ margin-top:60px; padding:38px 18px; background:linear-gradient(180deg,#050505,#070707); color:var(--muted); }
+  .footer-inner{ max-width:var(--max); margin:0 auto; display:flex; justify-content:space-between; gap:20px; align-items:flex-start; flex-wrap:wrap; }
 
-        /* ------------------------------------------- */
-        /* --- FEATURED CATEGORIES SECTION (NEW) --- */
-        /* ------------------------------------------- */
-        .category-grid {
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            margin-top: 40px;
-        }
+  /* audio control (hidden until user needs) */
+  #audio-control {
+    position:fixed; left:18px; bottom:18px; z-index:9999; background:rgba(0,0,0,0.6); border-radius:10px; padding:8px; display:flex; gap:8px; align-items:center;
+  }
+  #audio-control button { background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--gold); padding:8px 10px; border-radius:8px; cursor:pointer; font-weight:700; }
 
-        .category-card {
-            background: var(--color-secondary);
-            padding: 30px;
-            border-radius: 10px;
-            width: 30%;
-            border: 1px solid var(--color-accent-pink);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
-            border-color: var(--color-accent-neon);
-        }
+  /* small screens */
+  @media (max-width:920px){
+    .hero-inner{ flex-direction:column-reverse; text-align:center; gap:18px; }
+    .hero h1{ font-size:32px; }
+    .manga-panel{ height:260px }
+  }
+</style>
+</head>
+<body>
 
-        .category-card h3 {
-            color: var(--color-accent-neon);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
-        }
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <div class="brand" aria-hidden="false">
+      <div class="mark" id="brandMark">AS</div>
+      <div>
+        <div class="title" id="brandTitle">Arcade Store</div>
+        <div style="font-size:12px;color:var(--muted)">Curated manga-aesthetic drops</div>
+      </div>
+    </div>
 
-        /* ------------------------------------------- */
-        /* --- PRODUCT GALLERY --- */
-        /* ------------------------------------------- */
-        .product-section {
-            background-color: var(--color-primary);
-        }
+    <nav class="header-nav" aria-label="main navigation">
+      <a href="#">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#best">Best Sellers</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-        .product-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
+<!-- HERO -->
+<section class="hero" role="region" aria-label="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 id="heroTitle">Arcade Store — Manga Aesthetic Drops</h1>
+      <p id="heroDesc">Premium anime-themed merchandise inspired by modern shonen — minimal silhouettes, manga panels and collectible drops. Clean, stylish and tasteful — for fans and newcomers both.</p>
+      <div class="cta-row">
+        <button class="btn-primary" onclick="location.href='#shop'">Shop Latest</button>
+        <button class="btn-ghost" onclick="location.href='#about'">How It Works</button>
+      </div>
+    </div>
 
-        .product-card {
-            background: rgba(59, 31, 92, 0.4); 
-            border: 2px solid var(--color-accent-neon);
-            border-radius: 8px; 
-            margin: 20px;
-            padding: 20px;
-            width: 300px;
-            min-height: 480px;
-            transition: all 0.5s;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            
-            animation: float-product 6s ease-in-out infinite;
-        }
-        
-        @keyframes float-product {
-            0%, 100% { transform: translateY(0) rotateX(0deg); }
-            50% { transform: translateY(-15px) rotateX(2deg); }
-        }
+    <div class="hero-right">
+      <div class="manga-panel" role="img" aria-label="manga-styled panel">
+        <div class="panel-frame">
+          <div class="panel-title">New Drop: Phantom Edge Pack</div>
+          <div class="panel-sub">A minimal poster set inspired by modern shonen silhouettes — pre-order now.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        .product-card:hover {
-            border-color: var(--color-accent-pink);
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--color-accent-pink);
-        }
+<!-- Featured / Grid -->
+<h3 class="section-title" id="best">Best Sellers</h3>
+<section class="grid" id="shop" aria-label="Products">
+  <!-- card 1 -->
+  <article class="card" role="article">
+    <div class="thumb" aria-hidden="true">
+      <span class="silhouette"></span>
+    </div>
+    <h3>Phantom Hoodie</h3>
+    <div class="meta">Premium cotton • Limited drop</div>
+    <button class="buy" onclick="goToProduct('Phantom Hoodie')">Buy</button>
+  </article>
 
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 10px var(--color-accent-pink));
-        }
+  <!-- card 2 -->
+  <article class="card" role="article">
+    <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
+    <h3>Shonen Poster Set</h3>
+    <div class="meta">3 prints • A2 size</div>
+    <button class="buy" onclick="goToProduct('Shonen Poster Set')">Buy</button>
+  </article>
 
-        .product-card h3 {
-            font-family: 'Orbitron', sans-serif;
-        }
+  <!-- card 3 -->
+  <article class="card" role="article">
+    <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
+    <h3>Manga Panel Phone Case</h3>
+    <div class="meta">Shockproof • Matte finish</div>
+    <button class="buy" onclick="goToProduct('Phone Case')">Buy</button>
+  </article>
 
-        .product-story {
-           font-style: italic
+  <!-- card 4 -->
+  <article class="card" role="article">
+    <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
+    <h3>Collector Pin Set</h3>
+    <div class="meta">Enamel • Collector edition</div>
+    <button class="buy" onclick="goToProduct('Pin Set')">Buy</button>
+  </article>
+</section>
+
+<!-- About -->
+<section id="about" style="max-width:var(--max); margin:28px auto; padding:0 18px; color:var(--muted);">
+  <h3 style="color:var(--gold); margin-bottom:8px">About Arcade Store</h3>
+  <p style="line-height:1.6">Arcade Store is a curated marketplace focusing on tasteful anime-inspired merch — we use manga-style panels, silhouettes and design cues rather than full character art so the site feels elegant and approachable for everyone.</p>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="max-width:var(--max); margin:18px auto 80px; padding:0 18px; color:var(--muted);">
+  <h3 style="color:var(--gold); margin-bottom:8px">Contact</h3>
+  <p>hello@arcadestore.example • +91 98765 43210</p>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong style="color:var(--gold)">Quick Links</strong>
+      <div style="margin-top:8px"><a href="#shop" style="color:var(--muted); text-decoration:none">Shop</a><br><a href="#about" style="color:var(--muted); text-decoration:none">About</a></div>
+    </div>
+    <div style="max-width:400px">
+      <strong style="color:var(--gold)">Newsletter</strong>
+      <p style="color:var(--muted); margin-top:8px">Sign up for drops & early access (placeholder)</p>
+    </div>
+  </div>
+</footer>
+
+<!-- audio UI: visible small control (autoplay may be blocked by some browsers) -->
+<div id="audio-control" aria-hidden="false" title="Background audio controls">
+  <button id="audio-toggle">Play BGM</button>
+  <button id="audio-mute">Mute</button>
+</div>
+
+<!-- ====== BACKGROUND AUDIO (Japanese dialogue snippets) ======
+You must replace the placeholder src URLs below with direct links to the audio clips you want to use.
+IMPORTANT: Many browsers block autoplay with sound — this script attempts to start low-volume playback and also provides manual controls.
+-->
+<audio id="bg-a" loop preload="auto" src=""></audio> <!-- replace src with first dialogue URL -->
+<audio id="bg-b" loop preload="auto" src=""></audio> <!-- replace src with second dialogue URL -->
+
+<script>
+  // ---------- SITE NAME (you asked Arcade Store) ----------
+  const SITE_NAME = "Arcade Store"; // already used in header
+  document.getElementById('brandTitle').textContent = SITE_NAME;
+  document.getElementById('brandMark').textContent = SITE_NAME.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase();
+
+  // ---------- PRODUCT NAV (placeholder) ----------
+  function goToProduct(name){
+    // In real site you'd link to product pages / checkout
+    alert("Open product page for: " + name);
+  }
+
+  // ---------- BACKGROUND AUDIO LOGIC ----------
+  const audioA = document.getElementById('bg-a');
+  const audioB = document.getElementById('bg-b');
+  const toggle = document.getElementById('audio-toggle');
+  const muteBtn = document.getElementById('audio-mute');
+
+  // Intended: the developer should replace the audio src with Japanese dialogue clips (small, short, low-volume).
+  // For demo: leave src empty; user must replace with legitimate audio URLs (hosted on your server or a reliable CDN).
+  // Attempt to autoplay softly:
+  function startBGM() {
+    try {
+      // set low volume to be unobtrusive
+      audioA.volume = 0.12;
+      audioB.volume = 0.10;
+      // alternate play to create layered ambience (if both provided)
+      if(audioA.src) audioA.play().catch(()=>{ /* autoplay likely blocked */ });
+      if(audioB.src) audioB.play().catch(()=>{ /* autoplay likely blocked */ });
+      toggle.textContent = "BGM On";
+    } catch(e){ console.warn("autoplay blocked", e); toggle.textContent = "Play BGM"; }
+  }
+  function stopBGM(){
+    try { audioA.pause(); audioB.pause(); toggle.textContent = "Play BGM"; } catch(e){}
+  }
+  toggle.addEventListener('click', ()=>{
+    if(toggle.textContent.includes("Play")) startBGM(); else stopBGM();
+  });
+  muteBtn.addEventListener('click', ()=>{
+    audioA.muted = !audioA.muted;
+    audioB.muted = audioA.muted;
+    muteBtn.textContent = audioA.muted ? "Unmute" : "Mute";
+  });
+
+  // Try to start automatically (will silently fail if blocked)
+  window.addEventListener('load', ()=>{
+    // slight delay to avoid immediate autoplay conflicts
+    setTimeout(()=> {
+      startBGM();
+    }, 800);
+  });
+
+  // ---------- PET / NUDGE (subtle Lottie pet) ----------
+  // We include an optional small mascot animation using Lottie (no external images).
+  // If you want the pet, include lottie.min.js and animation urls; otherwise this remains inert.
+  (function(){
+    // Only load Lottie & animation if you provide a working JSON URL.
+    // Example usage (uncomment and replace URL):
+    // const lottieScript = document.createElement('script');
+    // lottieScript.src = "https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.0/lottie.min.js";
+    // document.head.appendChild(lottieScript);
+    // lottieScript.onload = ()=>{ /* load animation into #pet-root as in previous examples */ };
+
+    // For now we keep the site lightweight; add pet via earlier provided code if desired.
+  })();
+
+  // ---------- Accessibility tweaks ----------
+  // Make buy buttons keyboard-focusable (already buttons) and improve reduced-motion:
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    document.documentElement.style.scrollBehavior = "auto";
+  }
+
+  // ---------- Final note ----------
+  // Replace placeholder audio src attributes with real Japanese dialogue mp3/ogg files hosted by you.
+  // Replace font src URLs at top with your hosted .woff/.woff2 files for Ghastly Panic / Akira Expanded / Stephen Type / Bassy.
+</script>
+</body>
+</html>
