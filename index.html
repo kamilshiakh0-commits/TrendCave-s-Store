@@ -116,12 +116,12 @@
     background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px 16px; border-radius:10px;
   }
 
-  /* --- Hero Panel with GOJOmanga.jpg (FINAL PATH FIX) --- */
+  /* --- Hero Panel with GOJOmanga.jpg (FINAL FIX - SIMPLE PATH) --- */
   .manga-panel{
     width:520px; max-width:100%; height:360px; border-radius:12px;
     background:
-      /* FIX: Using reliable root-relative path */
-      url("/GOJOmanga.jpg") center/contain no-repeat, 
+      /* FIX: Using simple relative path (most reliable for local file viewing) */
+      url("GOJOmanga.jpg") center/contain no-repeat, 
       #f2f2f2, /* Light background for visibility */
       /* Baaki ke gradients aur overlays */
       linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)),
@@ -169,18 +169,18 @@
   /* Remove the old CSS silhouette and assign uploaded images */
   .thumb .silhouette { display: none; }
 
-  /* Thumbnail 1: Sukuna.jpg (FINAL PATH FIX) */
+  /* Thumbnail 1: Sukuna.jpg (FINAL FIX - SIMPLE PATH) */
   .grid article:nth-child(1) .thumb {
       background: 
-        /* FIX: Using reliable root-relative path */
-        url("/Sukuna.jpg") center/contain no-repeat,
+        /* FIX: Using simple relative path (no leading slash) */
+        url("Sukuna.jpg") center/contain no-repeat,
         #f2f2f2; /* Light background for visibility */
   }
-  /* Thumbnail 2: yuji.jpg (FINAL PATH FIX) */
+  /* Thumbnail 2: yuji.jpg (FINAL FIX - SIMPLE PATH) */
   .grid article:nth-child(2) .thumb {
       background: 
-        /* FIX: Using reliable root-relative path */
-        url("/yuji.jpg") center/contain no-repeat,
+        /* FIX: Using simple relative path (no leading slash) */
+        url("yuji.jpg") center/contain no-repeat,
         #f2f2f2; /* Light background for visibility */
   }
 
