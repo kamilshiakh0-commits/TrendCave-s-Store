@@ -116,13 +116,13 @@
     background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px 16px; border-radius:10px;
   }
 
-  /* --- Hero Panel with GOJOmanga.jpg (FINAL CODE) --- */
+  /* --- Hero Panel with GOJOmanga.jpg (FINAL PATH FIX) --- */
   .manga-panel{
     width:520px; max-width:100%; height:360px; border-radius:12px;
     background:
-      /* Image aur uska light background */
-      url('GOJOmanga.jpg') center/contain no-repeat, 
-      #f2f2f2, /* ADDED: Light background for visibility */
+      /* FIX: Using reliable root-relative path */
+      url("/GOJOmanga.jpg") center/contain no-repeat, 
+      #f2f2f2, /* Light background for visibility */
       /* Baaki ke gradients aur overlays */
       linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)),
       repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 6px),
@@ -169,17 +169,19 @@
   /* Remove the old CSS silhouette and assign uploaded images */
   .thumb .silhouette { display: none; }
 
-  /* Thumbnail 1: Sukuna.jpg (FINAL CODE) */
+  /* Thumbnail 1: Sukuna.jpg (FINAL PATH FIX) */
   .grid article:nth-child(1) .thumb {
       background: 
-        url('Sukuna.jpg') center/contain no-repeat,
-        #f2f2f2; /* ADDED: Light background for visibility */
+        /* FIX: Using reliable root-relative path */
+        url("/Sukuna.jpg") center/contain no-repeat,
+        #f2f2f2; /* Light background for visibility */
   }
-  /* Thumbnail 2: yuji.jpg (FINAL CODE) */
+  /* Thumbnail 2: yuji.jpg (FINAL PATH FIX) */
   .grid article:nth-child(2) .thumb {
       background: 
-        url('yuji.jpg') center/contain no-repeat,
-        #f2f2f2; /* ADDED: Light background for visibility */
+        /* FIX: Using reliable root-relative path */
+        url("/yuji.jpg") center/contain no-repeat,
+        #f2f2f2; /* Light background for visibility */
   }
 
   /* card 3 and 4 revert to the original silhouette placeholder design */
