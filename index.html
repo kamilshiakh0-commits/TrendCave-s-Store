@@ -1,19 +1,10 @@
-<!-- Save this file as arcade_store_index.html and open in a browser -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Arcade Store — Manga Aesthetic</title>
+<title>Arcade Store — Minimal Aesthetic</title>
 
-<!-- ====== FONT SETUP ======
-You requested these font names: GHASTLY PANIC / AKIRA EXPANDED / STEPHEN TYPE / BASSY
-I can't host proprietary font files here — replace the src urls below with your hosted font files (.woff2/.woff).
-Example:
-  @font-face { font-family: "GHASTLY PANIC"; src: url("/fonts/GhastlyPanic.woff2") format("woff2"); font-weight: 700; font-style: normal; }
-
-If you don't have those files, the site will fall back to the provided similar web fonts.
--->
 <style>
   @font-face {
     font-family: "Ghastly Panic";
@@ -48,8 +39,8 @@ If you don't have those files, the site will fall back to the provided similar w
   :root{
     --bg-1: #060608;
     --panel: #0f0f11;
-    --accent-1: #ef3f3f;   /* Demon-slayer red vibe */
-    --accent-2: #2fc5ff;   /* blue glow (Jujutsu vibe) */
+    --accent-1: #ef3f3f;   
+    --accent-2: #2fc5ff;   
     --gold: #ffd166;
     --muted: #9da3a8;
     --max: 1200px;
@@ -99,7 +90,7 @@ If you don't have those files, the site will fall back to the provided similar w
   }
   nav.header-nav a:hover{ color:var(--accent-1) }
 
-  /* --- Hero / Manga-style --- */
+  /* --- Hero / Aesthetic Style --- */
   .hero{
     padding:64px 18px; display:flex; align-items:center; justify-content:center; gap:28px;
   }
@@ -125,10 +116,11 @@ If you don't have those files, the site will fall back to the provided similar w
     background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; padding:10px 16px; border-radius:10px;
   }
 
-  /* --- Manga panel / placeholder art (NO real character images) --- */
+  /* --- Hero Panel with GOJOmanga.jpg --- */
   .manga-panel{
     width:520px; max-width:100%; height:360px; border-radius:12px;
     background:
+      url('GOJOmanga.jpg') center/contain no-repeat, /* Hero Image 1 */
       linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)),
       repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 6px),
       radial-gradient(circle at 10% 15%, rgba(47,197,255,0.06), transparent 8%),
@@ -137,7 +129,7 @@ If you don't have those files, the site will fall back to the provided similar w
     border:1px solid rgba(255,255,255,0.03);
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   }
-  /* halftone dot overlay using svg filter (manga-like) */
+  /* halftone dot overlay using svg filter (kept for aesthetic) */
   .manga-panel::after{
     content:"";
     position:absolute; inset:0; pointer-events:none;
@@ -146,16 +138,16 @@ If you don't have those files, the site will fall back to the provided similar w
     mix-blend-mode: overlay;
   }
 
-  /* stylized manga panel lines */
+  /* stylized panel lines */
   .panel-frame{
     width:86%; height:84%; border:3px solid rgba(255,255,255,0.03); border-radius:8px; display:flex; flex-direction:column;
     padding:18px; gap:12px; align-items:flex-start; justify-content:center;
-    background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.02));
+    background: rgba(0,0,0,0.4); 
   }
   .panel-title{ font-family:"Akira Expanded","Ghastly Panic","Rubik",sans-serif; color:var(--accent-2); font-size:20px; letter-spacing:0.6px; }
   .panel-sub{ color:var(--muted); font-size:13px; max-width:420px; }
 
-  /* --- Products grid (no real photos; manga frame style thumbnails) --- */
+  /* --- Products grid (Images added as thumbnails) --- */
   .section-title{ max-width:var(--max); margin:8px auto; padding:0 18px; color:var(--gold); font-weight:700; font-size:18px; }
   .grid{ max-width:var(--max); margin:10px auto 56px; padding:0 18px; display:grid; gap:18px;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
@@ -170,13 +162,26 @@ If you don't have those files, the site will fall back to the provided similar w
     width:100%; height:160px; display:block; border-radius:8px; background: linear-gradient(135deg,#111 0%, #141414 100%);
     position:relative; overflow:hidden; border:1px solid rgba(255,255,255,0.02);
   }
-  /* make a manga-style silhouette using CSS shapes (no real characters) */
-  .thumb .silhouette{
-    width:100%; height:100%; display:block; background:
-      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.02), transparent 6%),
-      linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  
+  /* Remove the old CSS silhouette and assign uploaded images */
+  .thumb .silhouette { display: none; }
+
+  /* Thumbnail 1: Sukuna.jpg */
+  .grid article:nth-child(1) .thumb {
+      background: url('Sukuna.jpg') center/contain no-repeat;
+  }
+  /* Thumbnail 2: yuji.jpg */
+  .grid article:nth-child(2) .thumb {
+      background: url('yuji.jpg') center/contain no-repeat;
+  }
+
+  /* card 3 and 4 revert to the original silhouette placeholder design */
+  .grid article:nth-child(3) .thumb .silhouette,
+  .grid article:nth-child(4) .thumb .silhouette {
+    display: block; 
     clip-path: polygon(10% 90%, 30% 20%, 50% 40%, 70% 15%, 90% 78%, 60% 92%, 40% 86%);
   }
+
   .card h3{ color:var(--gold); margin:10px 0 6px; font-size:16px; font-family:"Bassy","Poppins"; }
   .meta{ color:var(--muted); font-size:13px; margin-bottom:10px; }
   .card .buy{ background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:#fff; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:800; }
@@ -207,7 +212,7 @@ If you don't have those files, the site will fall back to the provided similar w
       <div class="mark" id="brandMark">AS</div>
       <div>
         <div class="title" id="brandTitle">Arcade Store</div>
-        <div style="font-size:12px;color:var(--muted)">Curated manga-aesthetic drops</div>
+        <div style="font-size:12px;color:var(--muted)">Curated minimal drops</div>
       </div>
     </div>
 
@@ -221,12 +226,11 @@ If you don't have those files, the site will fall back to the provided similar w
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero" role="region" aria-label="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <h1 id="heroTitle">Arcade Store — Manga Aesthetic Drops</h1>
-      <p id="heroDesc">Premium anime-themed merchandise inspired by modern shonen — minimal silhouettes, manga panels and collectible drops. Clean, stylish and tasteful — for fans and newcomers both.</p>
+      <h1 id="heroTitle">Arcade Store — Minimal Design Drops</h1>
+      <p id="heroDesc">Premium aesthetic merchandise — minimal silhouettes and collectible drops. Clean, stylish and tasteful — for fans and newcomers both.</p>
       <div class="cta-row">
         <button class="btn-primary" onclick="location.href='#shop'">Shop Latest</button>
         <button class="btn-ghost" onclick="location.href='#about'">How It Works</button>
@@ -234,20 +238,18 @@ If you don't have those files, the site will fall back to the provided similar w
     </div>
 
     <div class="hero-right">
-      <div class="manga-panel" role="img" aria-label="manga-styled panel">
+      <div class="manga-panel" role="img" aria-label="Aesthetic design panel">
         <div class="panel-frame">
           <div class="panel-title">New Drop: Phantom Edge Pack</div>
-          <div class="panel-sub">A minimal poster set inspired by modern shonen silhouettes — pre-order now.</div>
+          <div class="panel-sub">A minimal poster set inspired by custom silhouettes — pre-order now.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Featured / Grid -->
 <h3 class="section-title" id="best">Best Sellers</h3>
 <section class="grid" id="shop" aria-label="Products">
-  <!-- card 1 -->
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true">
       <span class="silhouette"></span>
@@ -257,23 +259,20 @@ If you don't have those files, the site will fall back to the provided similar w
     <button class="buy" onclick="goToProduct('Phantom Hoodie')">Buy</button>
   </article>
 
-  <!-- card 2 -->
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
-    <h3>Shonen Poster Set</h3>
+    <h3>Design Poster Set</h3>
     <div class="meta">3 prints • A2 size</div>
     <button class="buy" onclick="goToProduct('Shonen Poster Set')">Buy</button>
   </article>
 
-  <!-- card 3 -->
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
-    <h3>Manga Panel Phone Case</h3>
+    <h3>Patterned Phone Case</h3>
     <div class="meta">Shockproof • Matte finish</div>
     <button class="buy" onclick="goToProduct('Phone Case')">Buy</button>
   </article>
 
-  <!-- card 4 -->
   <article class="card" role="article">
     <div class="thumb" aria-hidden="true"><span class="silhouette"></span></div>
     <h3>Collector Pin Set</h3>
@@ -282,13 +281,11 @@ If you don't have those files, the site will fall back to the provided similar w
   </article>
 </section>
 
-<!-- About -->
 <section id="about" style="max-width:var(--max); margin:28px auto; padding:0 18px; color:var(--muted);">
   <h3 style="color:var(--gold); margin-bottom:8px">About Arcade Store</h3>
-  <p style="line-height:1.6">Arcade Store is a curated marketplace focusing on tasteful anime-inspired merch — we use manga-style panels, silhouettes and design cues rather than full character art so the site feels elegant and approachable for everyone.</p>
+  <p style="line-height:1.6">Arcade Store is a curated marketplace focusing on tasteful aesthetic merch — we use design panels, silhouettes and custom cues rather than full character art so the site feels elegant and approachable for everyone.</p>
 </section>
 
-<!-- Contact -->
 <section id="contact" style="max-width:var(--max); margin:18px auto 80px; padding:0 18px; color:var(--muted);">
   <h3 style="color:var(--gold); margin-bottom:8px">Contact</h3>
   <p>hello@arcadestore.example • +91 98765 43210</p>
@@ -302,25 +299,17 @@ If you don't have those files, the site will fall back to the provided similar w
     </div>
     <div style="max-width:400px">
       <strong style="color:var(--gold)">Newsletter</strong>
-      <p style="color:var(--muted); margin-top:8px">Sign up for drops & early access (placeholder)</p>
+      <p style="color:var(--muted); margin-top:8px">Sign up for drops & early access</p>
     </div>
   </div>
 </footer>
 
-<!-- audio UI: visible small control (autoplay may be blocked by some browsers) -->
 <div id="audio-control" aria-hidden="false" title="Background audio controls">
   <button id="audio-toggle">Play BGM</button>
   <button id="audio-mute">Mute</button>
 </div>
 
-<!-- ====== BACKGROUND AUDIO (Japanese dialogue snippets) ======
-You must replace the placeholder src URLs below with direct links to the audio clips you want to use.
-IMPORTANT: Many browsers block autoplay with sound — this script attempts to start low-volume playback and also provides manual controls.
--->
-<audio id="bg-a" loop preload="auto" src=""></audio> <!-- replace src with first dialogue URL -->
-<audio id="bg-b" loop preload="auto" src=""></audio> <!-- replace src with second dialogue URL -->
-
-<script>
+<audio id="bg-a" loop preload="auto" src=""></audio> <audio id="bg-b" loop preload="auto" src=""></audio> <script>
   // ---------- SITE NAME (you asked Arcade Store) ----------
   const SITE_NAME = "Arcade Store"; // already used in header
   document.getElementById('brandTitle').textContent = SITE_NAME;
